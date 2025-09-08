@@ -8,6 +8,7 @@ import Pricelist from "./components/Pricelist";
 import GeneralInfo from "./components/GeneralInfo";
 import Contact from "./components/Contact";
 import About from "./components/AboutUs";
+import Footer from "./components/Footer";
 import { useEffect, useRef, useState } from "react";
 
 const SECTIONS = [
@@ -80,6 +81,7 @@ export default function App() {
           <About />
         </section>
       </main>
+      <Footer />
     </div>
   );
 }
