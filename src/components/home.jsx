@@ -6,6 +6,7 @@ export default function Home() {
         <h1 className="text-3xl md:text-4xl font-heading font-semibold mb-4">
           Velkommen til Zen Harmony Spa
         </h1>
+        <h2>Hello</h2>
         <p className="text-slate-600 max-w-xl mx-auto">
           Opplev avslapning og harmoni i vårt luksuriøse private spa – 
           perfekt for deg, venner eller familie.
