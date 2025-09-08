@@ -5,7 +5,7 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
 
   const jump = (id) => {
     onJump(id);
-    setOpen(false); // Lukk menyen på mobil når du klikker
+    setOpen(false); // Denne lukker mobilmenyen ved klikk
   };
 
   return (
@@ -14,8 +14,8 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
       className="sticky top-16 z-40 w-full border-b bg-white/80 backdrop-blur"
     >
       <nav className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
-        {/* Venstre - Tittel eller logo */}
-        <div className="font-heading text-base md:text-lg">Menu</div>
+        {/* Dette er logoen og/eller tittelen */}
+        <div className="font-heading text-base md:text-lg">Meny</div>
 
         {/* Desktop lenker */}
         <div className="hidden md:flex items-center gap-6 text-sm">
@@ -43,7 +43,7 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
           onClick={() => jump("booking")}
           className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand text-white hover:bg-brand-dark transition"
         >
-          Book now
+          Book now!
         </button>
 
         {/* Mobilmeny-knapp */}

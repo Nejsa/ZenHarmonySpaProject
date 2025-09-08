@@ -4,13 +4,16 @@ export default function Header() {
       <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
         
         {/* Logo og navn */}
-        <div className="flex items-center gap-3">
-          {/* Du kan bytte denne sirkelen til et ekte logo-bilde */}
+        <div className="flex-1 flex items-center justify-center gap-4 ml-24">
+          {/* Logo */}
           <div className="w-9 h-9 rounded-full bg-brand/20 flex items-center justify-center">
             <span className="text-brand font-bold text-lg">Z</span>
           </div>
-          <div>
-            <div className="font-heading text-xl tracking-tight">Zen Harmony Spa</div>
+          {/* Title and subtitle */}
+          <div className="flex flex-col items-center">
+            <div className="font-heading text-xl tracking-tight">
+              Zen Harmony Spa
+            </div>
             <div className="text-xs text-slate-500">Calm • Wellness • Private Spa</div>
           </div>
         </div>
@@ -23,7 +26,7 @@ export default function Header() {
             href="#contact"
             className="underline underline-offset-4 decoration-brand/30 hover:decoration-brand"
           >
-            Contact
+            Kontakt oss
           </a>
         </div>
       </div>

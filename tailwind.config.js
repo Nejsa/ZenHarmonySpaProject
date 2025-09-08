@@ -9,9 +9,9 @@ export default {
       },
       colors: {
         brand: {
-          DEFAULT: '#0ea5a3', // rolig turkis/teal aksent
-          dark: '#0b8482',
-          light: '#e6f7f6',
+          DEFAULT: '#fdc305ff', // Gold-ish farge
+          dark: '#ff0000ef',
+          light: '#df9800ff',
         },
       },
       boxShadow: {
