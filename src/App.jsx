@@ -7,7 +7,7 @@ import Booking from "./components/Booking";
 import Pricelist from "./components/Pricelist";
 import GeneralInfo from "./components/GeneralInfo";
 import Contact from "./components/Contact";
-import About from "./components/AboutUs"
+import About from "./components/AboutUs";
 import { useEffect, useRef, useState } from "react";
 
 const SECTIONS = [
@@ -35,7 +35,8 @@ export default function App() {
   useEffect(() => {
     const headerH = navbarRef.current?.offsetHeight || 0;
     const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      (entries) =>
+        entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { rootMargin: `-${headerH + 24}px 0px -60% 0px`, threshold: 0.1 }
     );
     SECTIONS.forEach(({ id }) => {
@@ -51,7 +52,12 @@ export default function App() {
       <Header />
 
       {/* Navbar rett under header */}
-      <Navbar ref={navbarRef} items={SECTIONS} active={active} onJump={scrollToId} />
+      <Navbar
+        ref={navbarRef}
+        items={SECTIONS}
+        active={active}
+        onJump={scrollToId}
+      />
 
       {/* Innhold */}
       <main className="mx-auto max-w-6xl px-4">

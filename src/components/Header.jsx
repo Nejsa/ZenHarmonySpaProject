@@ -2,7 +2,6 @@ export default function Header() {
   return (
     <div className="w-full bg-white border-b sticky top-0 z-50">
       <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-        
         {/* Logo og navn */}
         <div className="flex-1 flex items-center justify-center gap-4 ml-24">
           {/* Logo */}
@@ -14,7 +13,9 @@ export default function Header() {
             <div className="font-heading text-xl tracking-tight">
               Zen Harmony Spa
             </div>
-            <div className="text-xs text-slate-500">Calm • Wellness • Private Spa</div>
+            <div className="text-xs text-slate-500">
+              Calm • Wellness • Private Spa
+            </div>
           </div>
         </div>
 
