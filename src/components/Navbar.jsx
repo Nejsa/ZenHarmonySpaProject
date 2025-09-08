@@ -11,11 +11,18 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
   return (
     <header
       ref={ref}
-      className="sticky top-16 z-40 w-full border-b bg-white/80 backdrop-blur"
+      className="sticky top-16 z-40 w-full border-b bg-black/80 backdrop-blur"
     >
       <nav className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
         {/* Dette er logoen og/eller tittelen */}
-        <div className="font-heading text-base md:text-lg">Meny</div>
+        <div className="font-heading text-base md:text-lg">
+          <img
+            src="/images/ZenHarmonySpaLogo.png"
+            alt="Logo"
+            className="h-16 inline-block mr-1"
+          />
+          Meny
+        </div>
 
         {/* Desktop lenker */}
         <div className="hidden md:flex items-center gap-6 text-sm">
