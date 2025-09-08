@@ -17,7 +17,7 @@ export default function Header() {
             <div className="font-heading text-xl tracking-tight">
               Zen Harmony Spa
             </div>
-            <div className="text-xs text-slate-500">
+            <div className="text-xs text-white">
               Calm • Wellness • Private Spa
             </div>
           </div>

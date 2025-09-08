@@ -26,8 +26,8 @@ export default function Booking() {
   }, [drinks, maxDrinksAllowed]);
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-semibold">Booking</h2>
+    <div className="space-y-6 w-full border-t border-white-700">
+      <h2 className="text-2xl font-semibold text-yellow-700">Booking</h2>
 
       <div className="grid md:grid-cols-3 gap-4">
         <Counter label="Adults" value={adults} setValue={setAdults} />

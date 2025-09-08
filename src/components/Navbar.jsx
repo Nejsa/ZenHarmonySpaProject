@@ -37,7 +37,7 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
               className={
                 it.id === active
                   ? "font-semibold text-brand"
-                  : "text-slate-600 hover:text-slate-900"
+                  : "text-yellow-700 hover:text-white"
               }
             >
               {it.label}

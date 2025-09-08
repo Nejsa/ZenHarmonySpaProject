@@ -3,10 +3,10 @@ export default function Home() {
     <div className="space-y-8">
       {/* Overskrift på toppen */}
       <div className="text-center pt-12">
-        <h1 className="text-3xl md:text-4xl font-heading font-semibold mb-4">
+        <h1 className="text-3xl md:text-4xl font-heading font-semibold mb-4 text-yellow-700">
           Velkommen til Zen Harmony Spa
         </h1>
-        <p className="text-slate-600 max-w-xl mx-auto">
+        <p className="text-white max-w-xl mx-auto">
           Opplev avslapning og harmoni i vårt luksuriøse private spa – perfekt
           for deg, venner eller familie.
         </p>
