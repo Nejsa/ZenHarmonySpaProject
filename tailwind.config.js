@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Montserrat', 'ui-sans-serif', 'system-ui'],
-        body: ['Lato', 'ui-sans-serif', 'system-ui'],
+        heading: ['Cormorant Garamond', 'serif'],
+        body: ['Fira Sans', 'sans-serif'], // Endret her
       },
       colors: {
         brand: {
-          DEFAULT: '#fdc305ff', // Gold-ish farge
-          dark: '#ff0000ef',
-          light: '#df9800ff',
+          DEFAULT: '#d4b58f', // Korrigert gullfarge
+          dark: '#b99d7a',    // En mørkere gullfarge
+          light: '#e9d8c4',   // En lysere gullfarge
         },
       },
       boxShadow: {

@@ -1,96 +1,89 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 const ADULT_PRICE = 995;
 const CHILD_PRICE = 599;
 const MAX_DRINKS = 10;
 
+// --- Counter Component ---
+// Denne komponenten er gjenbrukt for å telle voksne, barn og drikke.
+function Counter({ label, value, setValue, min = 0, max = Infinity }) {
+  const increment = () => setValue((v) => Math.min(v + 1, max));
+  const decrement = () => setValue((v) => Math.max(v - 1, min));
+
+  return (
+    <div className="flex items-center justify-between py-4 border-b border-brand/10">
+      <span className="text-lg text-brand-light">{label}</span>
+      <div className="flex items-center gap-4">
+        <button
+          onClick={decrement}
+          disabled={value <= min}
+          className="w-8 h-8 rounded-full border border-brand text-brand disabled:opacity-30 hover:bg-brand hover:text-black transition"
+        >
+          -
+        </button>
+        <span className="w-8 text-center text-xl font-semibold text-white">
+          {value}
+        </span>
+        <button
+          onClick={increment}
+          disabled={value >= max}
+          className="w-8 h-8 rounded-full border border-brand text-brand disabled:opacity-30 hover:bg-brand hover:text-black transition"
+        >
+          +
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// --- Hoved Booking Component ---
 export default function Booking() {
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [drinks, setDrinks] = useState(0);
 
-  // Brukes til å beregne maks drikker og total
   const totalGuests = adults + children;
+  const maxDrinksAllowed = Math.min(MAX_DRINKS, totalGuests);
 
   const total = useMemo(
     () => adults * ADULT_PRICE + children * CHILD_PRICE,
     [adults, children]
   );
 
-  // Drikke kan ikke overstige antall gjester eller MAX_DRINKS
-  const maxDrinksAllowed = Math.min(MAX_DRINKS, totalGuests);
-
-  // Hvis gjester reduseres, juster drikker ned automatisk
-  useEffect(() => {
-    if (drinks > maxDrinksAllowed) setDrinks(maxDrinksAllowed);
-  }, [drinks, maxDrinksAllowed]);
-
   return (
-    <div className="space-y-6 w-full border-t border-white-700">
-      <h2 className="text-2xl font-semibold text-yellow-700">Booking</h2>
+    <div className="py-24">
+      <div className="max-w-2xl mx-auto bg-neutral-900 border border-brand/20 rounded-xl shadow-lg p-8">
+        <h2 className="font-heading text-3xl text-center text-brand-light mb-8">
+          Book Din Private Spa-Opplevelse
+        </h2>
 
-      <div className="grid md:grid-cols-3 gap-4">
-        <Counter label="Adults" value={adults} setValue={setAdults} />
-        <Counter
-          label="Children/Youth"
-          value={children}
-          setValue={setChildren}
-        />
-        <Counter
-          label={`Drinks (max ${maxDrinksAllowed})`}
-          value={drinks}
-          setValue={setDrinks}
-          min={0}
-          max={maxDrinksAllowed}
-        />
-      </div>
+        <div className="space-y-2">
+          <Counter
+            label={`Voksne (kr ${ADULT_PRICE})`}
+            value={adults}
+            setValue={setAdults}
+            min={1}
+          />
+          <Counter
+            label={`Barn (kr ${CHILD_PRICE})`}
+            value={children}
+            setValue={setChildren}
+          />
+          <Counter
+            label="Drikke (valgfritt)"
+            value={drinks}
+            setValue={setDrinks}
+            max={maxDrinksAllowed}
+          />
+        </div>
 
-      <div className="p-4 rounded-xl bg-white shadow">
-        <h4 className="font-semibold mb-2">Summary</h4>
-        <ul className="text-sm text-slate-700 space-y-1">
-          <li>
-            Adults: {adults} × NOK {ADULT_PRICE}
-          </li>
-          <li>
-            Children/Youth: {children} × NOK {CHILD_PRICE}
-          </li>
-          <li>Total Guests: {totalGuests}</li>
-          <li>
-            Drinks: {drinks} / {maxDrinksAllowed}
-          </li>
-        </ul>
-        <div className="mt-3 font-semibold">Total: NOK {total}</div>
-      </div>
-    </div>
-  );
-}
+        <div className="mt-8 flex justify-between items-center text-2xl font-semibold">
+          <span className="text-brand-light">Total Pris:</span>
+          <span className="text-white">kr {total}</span>
+        </div>
 
-function Counter({ label, value, setValue, min = 0, max = Infinity }) {
-  const dec = () => setValue(Math.max(min, value - 1));
-  const inc = () => setValue(Math.min(max, value + 1));
-
-  return (
-    <div className="p-4 rounded-xl bg-white shadow flex items-center justify-between">
-      <div>
-        <div className="text-sm text-slate-500">{label}</div>
-        <div className="text-2xl font-semibold">{value}</div>
-      </div>
-      <div className="flex gap-2">
-        <button
-          type="button"
-          onClick={dec}
-          className="w-9 h-9 rounded-lg border"
-          disabled={value <= min}
-        >
-          -
-        </button>
-        <button
-          type="button"
-          onClick={inc}
-          className="w-9 h-9 rounded-lg border"
-          disabled={value >= max}
-        >
-          +
+        <button className="w-full mt-8 py-3 rounded-lg bg-brand text-black font-bold text-lg hover:bg-brand-dark transition">
+          Gå til betaling
         </button>
       </div>
     </div>

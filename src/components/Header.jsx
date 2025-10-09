@@ -14,7 +14,7 @@ export default function Header() {
           </div>
           {/* Title and subtitle */}
           <div className="flex flex-col items-center">
-            <div className="font-heading text-xl tracking-tight">
+            <div className="font-heading text-xl tracking-tight text-orange-200">
               Zen Harmony Spa
             </div>
             <div className="text-xs text-white">

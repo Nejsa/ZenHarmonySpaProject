@@ -1,44 +1,34 @@
 export default function Home() {
   return (
-    <div className="space-y-8">
-      {/* Overskrift på toppen */}
-      <div className="text-center pt-12">
-        <h1 className="text-3xl md:text-4xl font-heading font-semibold mb-4 text-yellow-700">
-          Velkommen til Zen Harmony Spa
-        </h1>
-        <p className="text-white max-w-xl mx-auto">
-          Opplev avslapning og harmoni i vårt luksuriøse private spa – perfekt
-          for deg, venner eller familie.
-        </p>
-      </div>
-
-      {/* Video – lenger ned, smalere bredde */}
-      <div className="pt-8">
+    <div>
+      {/* --- Hero Seksjon med Video --- */}
+      <section className="relative flex items-center justify-center h-[75vh] overflow-hidden">
+        {/* Bakgrunnsvideo */}
         <video
-          src="/video/klipptest.mp4"
-          className="w-full max-w-3xl mx-auto h-48 md:h-72 object-cover rounded-card shadow-soft"
+          src="/video/SpaVideo.mp4"
+          className="absolute z-0 w-full h-full object-cover"
           autoPlay
           muted
           loop
-          controls
+          playsInline // Viktig for autoplay på mobil
         />
-      </div>
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="p-6 rounded-xl bg-white shadow">
-          <h3 className="font-semibold text-lg mb-1">Private Spa</h3>
-          <p className="text-sm text-slate-600">Relax and unwind in luxury.</p>
-        </div>
-        <div className="p-6 rounded-xl bg-white shadow">
-          <h3 className="font-semibold text-lg mb-1">Easy Booking</h3>
-          <p className="text-sm text-slate-600">
-            Select guests, date, and time easily.
+
+        {/* Mørkt overlegg for tekstlesbarhet */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
+
+        {/* Tekstinnhold */}
+        <div className="relative z-20 text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-heading font-semibold mb-4 text-brand-light">
+            Velkommen til Zen Harmony Spa
+          </h1>
+          <p className="text-lg text-white max-w-2xl mx-auto">
+            Opplev avslapning og harmoni i vårt luksuriøse private spa – perfekt
+            for deg, venner eller familie.
           </p>
         </div>
-        <div className="p-6 rounded-xl bg-white shadow">
-          <h3 className="font-semibold text-lg mb-1">Gift Cards</h3>
-          <p className="text-sm text-slate-600">Give the gift of wellness.</p>
-        </div>
-      </div>
+      </section>
+
+      {/* Kort-seksjonen som var her er nå fjernet */}
     </div>
   );
 }

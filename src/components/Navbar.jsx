@@ -13,16 +13,8 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
       ref={ref}
       className="sticky top-16 z-40 w-full border-b bg-black/80 backdrop-blur"
     >
-      <nav className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between">
+      <nav className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-center">
         {/* Dette er logoen og/eller tittelen */}
-        <div className="font-heading text-base md:text-lg">
-          <img
-            src="/images/ZenHarmonySpaLogo.png"
-            alt="Logo"
-            className="h-16 inline-block mr-1"
-          />
-          Meny
-        </div>
 
         {/* Desktop lenker */}
         <div className="hidden md:flex items-center gap-6 text-sm">
@@ -36,8 +28,8 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
               }}
               className={
                 it.id === active
-                  ? "font-semibold text-brand"
-                  : "text-yellow-700 hover:text-white"
+                  ? "font-semibold text-brand-light" // Aktiv lenke (lysere gull)
+                  : "text-brand hover:text-brand-light" // Standard lenke (gull, blir lysere på hover)
               }
             >
               {it.label}
@@ -48,7 +40,7 @@ const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
         {/* Desktop CTA-knapp */}
         <button
           onClick={() => jump("booking")}
-          className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand text-white hover:bg-brand-dark transition"
+          className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand text-white hover:bg-brand-dark transition ml-8"
         >
           Book now!
         </button>
