@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Booking from "./components/Booking";
 import Pricelist from "./components/Pricelist";
+import Gallery from "./components/Gallery";
 import GeneralInfo from "./components/GeneralInfo";
 import Contact from "./components/Contact";
 import About from "./components/AboutUs";
@@ -15,6 +16,7 @@ const SECTIONS = [
   { id: "home", label: "Home" },
   { id: "booking", label: "Booking" },
   { id: "pricelist", label: "Pricelist" },
+  { id: "gallery", label: "Gallery" },
   { id: "general-information", label: "General Information" },
   { id: "contact", label: "Contact" },
   { id: "about-us", label: "About Us" },
@@ -71,6 +73,10 @@ export default function App() {
         <section id="pricelist" className="scroll-mt-16 py-10">
           <Pricelist />
         </section>
+
+        <section id="gallery" className="scroll-mt-16 py-10">
+          <Gallery />
+        </section>  
         <section id="general-information" className="scroll-mt-16 py-10">
           <GeneralInfo />
         </section>

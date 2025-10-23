@@ -12,8 +12,9 @@ export default function About() {
   return (
     <div className="py-24">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="font-heading text-4xl text-center text-brand-light mb-12">
+        <h2 className="font-heading text-4xl text-center text-brand-light mb-12 relative">
           Om Oss
+          <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
         {/* --- Nytt kort som rammer inn innholdet --- */}
@@ -23,8 +24,7 @@ export default function About() {
             <div className="space-y-4">
               <p>
                 Velkommen til Zen Harmony Spa – din private oase av luksus og
-                avslapning! Hos oss kan du og dine kjære nyte en privat
-                spa-opplevelse, helt for dere selv. Slapp av i boblebadet, kjenn
+                avslapning! Hos oss kan
                 varmen fra badstuen, og nyt forfriskende spa-dusjer.
               </p>
               <p>
