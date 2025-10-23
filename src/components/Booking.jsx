@@ -51,7 +51,7 @@ export default function Booking() {
   );
 
   return (
-    <div className="py-24">
+    <div className="py-2">
       <div className="max-w-2xl mx-auto bg-neutral-900 border border-brand/20 rounded-xl shadow-lg p-8">
         <h2 className="font-heading text-3xl text-center text-brand-light mb-8">
           Book Din Private Spa-Opplevelse

@@ -95,10 +95,11 @@ function IncludedItem({ children }) {
 
 export default function Pricelist() {
   return (
-    <div className="py-24">
+    <div className="py-2">  
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="font-heading text-4xl text-center text-brand-light mb-16">
           Prisliste
+          <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
         <div className="grid lg:grid-cols-2 lg:gap-x-16 gap-y-12">

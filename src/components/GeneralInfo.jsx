@@ -1,9 +1,10 @@
 export default function GeneralInfo() {
   return (
-    <div className="py-24">
+    <div className="py-2">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="font-heading text-4xl text-center text-brand-light mb-12">
           Generell Informasjon
+          <div className="w-80 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
         {/* --- Wrapper-div som rammer inn innholdet --- */}

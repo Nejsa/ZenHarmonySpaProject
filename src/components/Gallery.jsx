@@ -17,11 +17,11 @@ export default function Gallery() {
   ];
 
   return (
-    <div className="py-24">
+    <div className="py-2">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="font-heading text-4xl text-center text-brand-light mb-16 relative">
           Vårt Spa
-          <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
+          <div className="w-36 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
         {/* Bildegalleri */}

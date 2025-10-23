@@ -10,9 +10,9 @@ function InfoListItem({ children }) {
 
 export default function About() {
   return (
-    <div className="py-24">
+    <div className="py-2">  
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="font-heading text-4xl text-center text-brand-light mb-12 relative">
+        <h2 className="font-heading text-4xl text-center text-brand-light mb-12">
           Om Oss
           <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
