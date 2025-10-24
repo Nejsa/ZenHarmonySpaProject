@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 flex items-center">
         {/* Venstre side */}
         <span className="text-sm flex-1">© 2025 Zen Harmony Spa</span>
-
+        
         {/* Midten: sosiale medier */}
         <div className="flex items-center gap-4 justify-center flex-1">
           <a
