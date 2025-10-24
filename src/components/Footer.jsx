@@ -40,7 +40,7 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://www.tiktok.com/@zenharmonyspa"
+            href="https://www.tiktok.com/@zenharmonyspa.no"
             target="_blank"
             rel="noopener noreferrer"
             className="underline hover:text-yellow-500 flex items-center"
