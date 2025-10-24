@@ -15,7 +15,7 @@ export default function GeneralInfo() {
               <h3 className="font-heading text-2xl text-brand-light mb-4">
                 Åpningstider
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 <div className="flex justify-between">
                   <span>Mandag - Torsdag:</span>
                   <span className="font-semibold text-white">16:00 - 22:00</span>
