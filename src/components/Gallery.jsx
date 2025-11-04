@@ -104,47 +104,69 @@ export default function Gallery() {
   }, [selectedIndex, images.length]);
 
   return (
-    <div className="py-2">
+    <div className="py-16">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="font-heading text-4xl text-center text-brand-light mb-16 relative">
+        <h2 className="font-heading text-4xl text-center text-brand-light mb-16">
           Vårt Spa
           <div className="w-36 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
-        {/* Bildegalleri */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Bildegalleri - mer naturlig layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-xl border border-brand/20 shadow-lg bg-neutral-800 h-64 cursor-pointer"
+              className="group relative overflow-hidden rounded-lg shadow-lg bg-neutral-800 h-64 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
               onClick={() => setSelectedIndex(index)}
             >
               <img
                 src={image.src}
                 alt={image.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
 
-              {/* Hover overlay: viser kun kort tittel */}
-              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-brand-light text-lg font-semibold text-center px-4">
-                  {image.title}
-                </span>
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="text-white text-lg font-semibold drop-shadow-lg">
+                    {image.title}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Tekst under galleriet */}
+        {/* Knapp til detaljert fasilitetsside */}
         <div className="text-center mt-12">
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
             Opplev luksus og avslapning i våre moderne spa-fasiliteter.
             Hver detalj er nøye utformet for å gi deg den ultimate spa-opplevelsen.
           </p>
+          
+          <button
+            onClick={() => window.open('/fasiliteter', '_blank')}
+            className="inline-flex items-center gap-3 bg-brand hover:bg-brand-dark text-black font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            <span>Utforsk våre fasiliteter i detalj</span>
+            <svg 
+              className="w-5 h-5" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+              />
+            </svg>
+          </button>
         </div>
       </div>
 
-      {/* Popup / Modal */}
+      {/* Popup / Modal - uendret */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"

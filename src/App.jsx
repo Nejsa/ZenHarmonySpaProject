@@ -1,93 +1,107 @@
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
-// Seksjoner
-import Home from "./components/Home";
-import Booking from "./components/Booking";
-import Pricelist from "./components/Pricelist";
+// Eksisterende komponenter
+import Header from "./components/header";
+import About from "./components/AboutUs";
+import Pricelist from "./components/priceList";
 import Gallery from "./components/Gallery";
 import GeneralInfo from "./components/GeneralInfo";
 import Contact from "./components/Contact";
-import About from "./components/AboutUs";
 import Footer from "./components/Footer";
-import { useEffect, useRef, useState } from "react";
 
-const SECTIONS = [
-  { id: "home", label: "Home" },
-  { id: "booking", label: "Booking" },
-  { id: "pricelist", label: "Pricelist" },
-  { id: "gallery", label: "Gallery" },
-  { id: "general-information", label: "General Information" },
-  { id: "contact", label: "Contact" },
-  { id: "about-us", label: "About Us" },
-];
+// Ny komponent
+import Facilities from "./components/Facilities";
+import Booking from "./components/Booking";
 
-export default function App() {
-  const [active, setActive] = useState("home");
-  const navbarRef = useRef(null);
-
-  const scrollToId = (id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const headerH = navbarRef.current?.offsetHeight || 0;
-    const y = el.getBoundingClientRect().top + window.pageYOffset - headerH - 8;
-    window.scrollTo({ top: y, behavior: "smooth" });
-    history.replaceState(null, "", `#${id}`);
-  };
-
-  useEffect(() => {
-    const headerH = navbarRef.current?.offsetHeight || 0;
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
-      { rootMargin: `-${headerH + 24}px 0px -60% 0px`, threshold: 0.1 }
-    );
-    SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+// Hovedside komponenten
+function HomePage() {
+  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-black text-yellow-700">
-      {/* Header øverst */}
+    <>
       <Header />
+      
+      {/* Hero Video Section */}
+      <section className="relative py-20 flex items-center justify-center overflow-hidden">
+        <div className="w-full px-8 md:px-16 lg:px-24">
+          <div className="relative h-[500px] md:h-[600px] lg:h-[700px] rounded-lg overflow-hidden border-2 border-brand/30 shadow-2xl">
+            <video
+              src="/video/SpaVideo.mp4"
+              className="absolute z-0 w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            
+            <div className="absolute inset-0 bg-black/40"></div>
+            
+            <div className="relative z-10 flex items-center justify-center h-full text-center text-white px-4">
+              <div>
+                <h1 className="font-heading text-4xl md:text-6xl mb-4 text-brand-light">
+                  Zen Harmony Spa
+                </h1>
+                <p className="text-lg md:text-xl mb-6 max-w-xl mx-auto">
+                  Din private oase av luksus og avslapning
+                </p>
+                <button 
+                  onClick={() => navigate('/booking')}
+                  className="bg-brand hover:bg-brand-dark text-black font-bold px-6 py-3 rounded-lg text-base transition-all duration-300 hover:scale-105 shadow-lg"
+                >
+                  Book nå!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Navbar rett under header */}
-      <Navbar
-        ref={navbarRef}
-        items={SECTIONS}
-        active={active}
-        onJump={scrollToId}
+      {/* Separator */}
+      <div className="py-8"></div>
+
+      <About />
+      
+      {/* Separator */}
+      <div className="py-8"></div>
+
+      <Gallery />
+      
+      {/* Separator */}
+      <div className="py-8"></div>
+
+      <Pricelist />
+      
+      {/* Separator */}
+      <div className="py-8"></div>
+
+      <GeneralInfo />
+      
+      {/* Separator */}
+      <div className="py-8"></div>
+
+      <Contact 
       />
 
-      {/* Innhold */}
-      <main className="mx-auto max-w-6xl px-4">
-        <section id="home" className="scroll-mt-16 py-10">
-          <Home />
-        </section>
-        <section id="booking" className="scroll-mt-16 py-10">
-          <Booking />
-        </section>
-        <section id="pricelist" className="scroll-mt-16 py-10">
-          <Pricelist />
-        </section>
-
-        <section id="gallery" className="scroll-mt-16 py-10">
-          <Gallery />
-        </section>  
-        <section id="general-information" className="scroll-mt-16 py-10">
-          <GeneralInfo />
-        </section>
-        <section id="contact" className="scroll-mt-16 py-10">
-          <Contact />
-        </section>
-        <section id="about-us" className="scroll-mt-16 py-10">
-          <About />
-        </section>
-      </main>
+      {/* Separator */}
+      <div className="py-8"></div>  
       <Footer />
-    </div>
+    </>
   );
 }
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-black text-white">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/fasiliteter" element={<Facilities />} />
+          <Route path="/booking" element={<Booking />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
