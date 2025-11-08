@@ -7,3 +7,55 @@
   body { @apply font-body text-slate-800 bg-white; }
   h1,h2,h3,h4 { @apply font-heading text-slate-900; }
 }
+
+/* Custom calendar styles */
+.custom-calendar {
+  width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: inherit !important;
+  color: white !important;
+}
+
+.custom-calendar .react-calendar__tile {
+  background: #374151 !important;
+  color: white !important;
+  border: 1px solid rgba(249, 166, 57, 0.2) !important;
+  border-radius: 8px !important;
+  margin: 2px !important;
+  padding: 10px !important;
+}
+
+.custom-calendar .react-calendar__tile:hover {
+  background: rgba(249, 166, 57, 0.2) !important;
+}
+
+.custom-calendar .react-calendar__tile--active {
+  background: #f9a639 !important;
+  color: black !important;
+}
+
+.custom-calendar .good-availability {
+  border-left: 4px solid #10b981 !important;
+}
+
+.custom-calendar .limited-availability {
+  border-left: 4px solid #f59e0b !important;
+}
+
+.custom-calendar .fully-booked {
+  background: #7f1d1d !important;
+  color: #fca5a5 !important;
+  cursor: not-allowed !important;
+}
+
+.custom-calendar .react-calendar__navigation button {
+  color: #f9a639 !important;
+  background: transparent !important;
+  border: none !important;
+  font-size: 16px !important;
+}
+
+.custom-calendar .react-calendar__navigation button:hover {
+  background: rgba(249, 166, 57, 0.2) !important;
+}

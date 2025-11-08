@@ -1,30 +1,17 @@
 import { useState } from "react";
+import Calendar from "./Calendar"; // Merk: Calandar (ikke Calendar)
 
 export default function Booking() {
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState('');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    date: "",
-    time: "",
     message: "",
   });
-
-  const timeSlots = [
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-  ];
 
   const total = adults * 995 + children * 599;
 
@@ -37,7 +24,11 @@ export default function Booking() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Takk for din booking! Vi kontakter deg snart for bekreftelse.");
+    if (!selectedDate || !selectedTime) {
+      alert('Vennligst velg dato og tidspunkt');
+      return;
+    }
+    alert(`Booking sendt for ${selectedDate.toLocaleDateString('nb-NO')} kl ${selectedTime}!`);
   };
 
   return (
@@ -55,11 +46,19 @@ export default function Booking() {
         </div>
       </div>
 
-      {/* Booking Form */}
       <div className="py-16">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-neutral-900 border border-brand/20 rounded-xl shadow-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-8">
+              
+              {/* Kalender seksjon */}
+              <Calendar
+                selectedDate={selectedDate}
+                onDateChange={setSelectedDate}
+                selectedTime={selectedTime}
+                onTimeChange={setSelectedTime}
+              />
+
               {/* Gjester og pris */}
               <div>
                 <h3 className="font-heading text-2xl text-brand-light mb-6">
@@ -158,38 +157,6 @@ export default function Booking() {
                     required
                     className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
                   />
-                </div>
-              </div>
-
-              {/* Dato og tid */}
-              <div>
-                <h3 className="font-heading text-2xl text-brand-light mb-6">
-                  Dato og tid
-                </h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <input
-                    type="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    required
-                    min={new Date().toISOString().split("T")[0]}
-                    className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white focus:border-brand focus:outline-none"
-                  />
-                  <select
-                    name="time"
-                    value={formData.time}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white focus:border-brand focus:outline-none"
-                  >
-                    <option value="">Velg tidspunkt</option>
-                    {timeSlots.map((time) => (
-                      <option key={time} value={time}>
-                        {time}
-                      </option>
-                    ))}
-                  </select>
                 </div>
               </div>
 
