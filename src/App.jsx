@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 // Ny komponent
 import Facilities from "./components/Facilities";
 import Booking from "./components/Booking";
+import Navbar from "./components/navbar";
 
 // Hovedside komponenten
 function HomePage() {
@@ -19,6 +20,7 @@ function HomePage() {
 
   return (
     <>
+      <Navbar /> 
       <Header />
       
       {/* Hero Video Section */}
@@ -95,8 +97,10 @@ function App() {
       <div className="min-h-screen bg-black text-white">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/fasiliteter" element={<Facilities />} />
-          <Route path="/booking" element={<Booking />} />
+          <Route path="/fasiliteter" element={<><Navbar /><Facilities /></>} />
+          <Route path="/booking" element={<><Navbar /><Booking /></>} />
+          <Route path="/kontakt" element={<><Navbar /><Contact /></>} />
+          <Route path="/prisliste" element={<><Navbar /><Pricelist /></>} />
         </Routes>
       </div>
     </Router>

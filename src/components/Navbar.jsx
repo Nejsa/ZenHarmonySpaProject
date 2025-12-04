@@ -1,92 +1,116 @@
-import { forwardRef, useState } from "react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-const Navbar = forwardRef(function Navbar({ items, active, onJump }, ref) {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const jump = (id) => {
-    onJump(id);
-    setOpen(false); // Denne lukker mobilmenyen ved klikk
-  };
+  const linkClass = (isActive) =>
+    `px-4 py-2 rounded-md transition-colors ${isActive ? "bg-brand text-black" : "text-slate-200 hover:bg-white/5"}`;
 
   return (
-    <header
-      ref={ref}
-      className="sticky top-16 z-40 w-full border-b bg-black/80 backdrop-blur"
-    >
-      <nav className="mx-auto max-w-6xl px-4 h-14 flex items-center justify-center">
-        {/* Dette er logoen og/eller tittelen */}
-
-        {/* Desktop lenker */}
-        <div className="hidden md:flex items-center gap-6 text-sm">
-          {items.map((it) => (
-            <a
-              key={it.id}
-              href={`#${it.id}`}
-              onClick={(e) => {
-                e.preventDefault();
-                jump(it.id);
-              }}
-              className={
-                it.id === active
-                  ? "font-semibold text-brand-light" // Aktiv lenke (lysere gull)
-                  : "text-brand hover:text-brand-light" // Standard lenke (gull, blir lysere på hover)
-              }
-            >
-              {it.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Desktop CTA-knapp */}
-        <button
-          onClick={() => jump("booking")}
-          className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand text-white hover:bg-brand-dark transition ml-8"
-        >
-          Book now!
-        </button>
-
-        {/* Mobilmeny-knapp */}
-        <button
-          className="md:hidden inline-flex items-center justify-center w-9 h-9 border rounded"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          ☰
-        </button>
-      </nav>
-
-      {/* Mobil dropdown */}
-      {open && (
-        <div className="md:hidden border-t bg-white">
-          <div className="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-3 text-sm">
-            {items.map((it) => (
-              <a
-                key={it.id}
-                href={`#${it.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  jump(it.id);
-                }}
-                className={
-                  it.id === active
-                    ? "font-semibold text-brand"
-                    : "text-slate-700 hover:text-slate-900"
-                }
+    <nav className="bg-neutral-900 border-b border-brand/10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center gap-6">
+            <NavLink to="/" className="text-2xl font-heading text-brand-light">
+              Zen Harmony
+            </NavLink>
+            <div className="hidden md:flex items-center gap-2">
+              <NavLink to="/" className={({ isActive }) => linkClass(isActive)}>
+                Hjem
+              </NavLink>
+              <NavLink
+                to="/fasiliteter"
+                className={({ isActive }) => linkClass(isActive)}
               >
-                {it.label}
-              </a>
-            ))}
-            <button
-              onClick={() => jump("booking")}
-              className="mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand text-white hover:bg-brand-dark transition"
-            >
-              Book now!
-            </button>
+                Fasiliteter
+              </NavLink>
+              <NavLink
+                to="/booking"
+                className={({ isActive }) => linkClass(isActive)}
+              >
+                Booking
+              </NavLink>
+              <NavLink
+                to="/kontakt"
+                className={({ isActive }) => linkClass(isActive)}
+              >
+                Kontakt
+              </NavLink>
+            </div>
           </div>
-        </div>
-      )}
-    </header>
-  );
-});
 
-export default Navbar;
+          <div className="hidden md:flex items-center gap-4">
+            <NavLink
+              to="/prisliste"
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Prisliste
+            </NavLink>
+            <NavLink
+              to="/admin"
+              className="px-3 py-2 text-sm rounded-md bg-white/5 hover:bg-white/10 text-slate-200"
+            >
+              Admin
+            </NavLink>
+          </div>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-200 hover:bg-white/5"
+            aria-label="Meny"
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
+
+        {open && (
+          <div className="md:hidden py-4 flex flex-col gap-2">
+            <NavLink
+              to="/"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Hjem
+            </NavLink>
+            <NavLink
+              to="/fasiliteter"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Fasiliteter
+            </NavLink>
+            <NavLink
+              to="/booking"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Booking
+            </NavLink>
+            <NavLink
+              to="/prisliste"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Prisliste
+            </NavLink>
+            <NavLink
+              to="/kontakt"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Kontakt
+            </NavLink>
+            <NavLink
+              to="/admin"
+              onClick={() => setOpen(false)}
+              className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
+            >
+              Admin
+            </NavLink>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
