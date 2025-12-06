@@ -123,18 +123,19 @@ export default function Facilities() {
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="font-heading text-5xl text-brand-light mb-6">
             Våre Fasiliteter
-            <div className="w-48 h-0.5 bg-brand mx-auto mt-6"></div>
+            <div className="w-72 h-0.5 bg-brand mx-auto mt-6"></div>
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Utforsk våre eksklusive spa-fasiliteter i detalj. Hver fasilitet er nøye designet 
             for å gi deg maksimal velvære og avslapning.
+           
           </p>
         </div>
       </div>
 
       {/* Fasiliteter */}
       <div className="py-16">
-        <div className="max-w-6xl mx-auto px-4 space-y-20">
+        <div className="max-w-6xl mx-auto px-4 space-y-32">
           {facilities.map((facility, index) => (
             <div 
               key={index} 

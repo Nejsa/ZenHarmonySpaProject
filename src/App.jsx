@@ -71,7 +71,9 @@ function HomePage() {
       {/* Separator */}
       <div className="py-8"></div>
 
-      <Pricelist />
+      <div id="prisliste">
+        <Pricelist />
+      </div>
       
       {/* Separator */}
       <div className="py-8"></div>
@@ -81,8 +83,9 @@ function HomePage() {
       {/* Separator */}
       <div className="py-8"></div>
 
-      <Contact 
-      />
+      <div id="kontakt">
+        <Contact />
+      </div>
 
       {/* Separator */}
       <div className="py-8"></div>  

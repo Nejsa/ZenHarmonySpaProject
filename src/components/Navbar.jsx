@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-neutral-900 border-b border-brand/10">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+      <div className="max-w-3xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-6">
             <NavLink to="/" className="text-2xl font-heading text-brand-light">
@@ -31,22 +31,17 @@ export default function Navbar() {
               >
                 Booking
               </NavLink>
-              <NavLink
-                to="/kontakt"
-                className={({ isActive }) => linkClass(isActive)}
-              >
+              
+               <a href="#prisliste" className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5">
+              Prisliste
+            </a>
+              <a href="#kontakt" className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5">
                 Kontakt
-              </NavLink>
+              </a>
             </div>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <NavLink
-              to="/prisliste"
-              className={({ isActive }) => linkClass(isActive)}
-            >
-              Prisliste
-            </NavLink>
             <NavLink
               to="/admin"
               className="px-3 py-2 text-sm rounded-md bg-white/5 hover:bg-white/10 text-slate-200"
@@ -87,20 +82,20 @@ export default function Navbar() {
             >
               Booking
             </NavLink>
-            <NavLink
-              to="/prisliste"
+            <a
+              href="#prisliste"
               onClick={() => setOpen(false)}
-              className={({ isActive }) => linkClass(isActive)}
+              className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
             >
               Prisliste
-            </NavLink>
-            <NavLink
-              to="/kontakt"
+            </a>
+            <a
+              href="#kontakt"
               onClick={() => setOpen(false)}
-              className={({ isActive }) => linkClass(isActive)}
+              className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
             >
               Kontakt
-            </NavLink>
+            </a>
             <NavLink
               to="/admin"
               onClick={() => setOpen(false)}
