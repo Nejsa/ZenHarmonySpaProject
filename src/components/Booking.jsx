@@ -33,10 +33,25 @@ export default function Booking() {
     setStep((s) => Math.max(s - 1, 1));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Booking sendt!");
-    // legg til faktisk bookinglogikk her
+    const bookingData = {
+      date: selectedDate,
+      time: selectedTime,
+      people,
+      ...formData,
+    };
+    const res = await fetch("http://localhost:5000/api/booking", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingData),
+    });
+    const result = await res.json();
+    if (result.success) {
+      alert("Booking lagret!");
+    } else {
+      alert("Feil: " + result.error);
+    }
   };
 
   return (
