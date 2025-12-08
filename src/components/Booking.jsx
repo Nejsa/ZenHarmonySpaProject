@@ -54,6 +54,16 @@ export default function Booking() {
     }
   };
 
+  const handleStripePayment = async () => {
+    const res = await fetch("http://localhost:5000/api/payment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: people * 995 }), // eller ditt totalbeløp
+    });
+    const data = await res.json();
+    window.location.href = data.url; // Redirect til Stripe
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Header */}
@@ -200,6 +210,15 @@ export default function Booking() {
                       className="bg-brand hover:bg-brand-dark text-black font-bold px-12 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg"
                     >
                       Send booking-forespørsel
+                    </button>
+                  </div>
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      onClick={handleStripePayment}
+                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-3 rounded-lg"
+                    >
+                      Betal med Stripe
                     </button>
                   </div>
                 </>
