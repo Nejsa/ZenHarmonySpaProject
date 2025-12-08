@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // --- Pris-konstanter ---
 const EXTRA_PERSON_PRICE = 690;
 
@@ -93,11 +95,95 @@ function IncludedItem({ children }) {
   );
 }
 
+const packages = [
+  {
+    title: "Spa Express",
+    description: "Rask og avslappende spaopplevelse.",
+    price: 995,
+    details: [
+      "Boblebad",
+      "Badstue",
+      "Dusj",
+      "Håndklær, badekåper, tøfler",
+      "Te- og kaffebuffet",
+    ],
+  },
+  {
+    title: "Standard Pakke",
+    description: "Utvidet spa med mocktails og frukt.",
+    price: 1495,
+    details: ["Alt fra Spa Express", "Ekstra tid", "Mocktails", "Fruktfat"],
+  },
+  {
+    title: "Romantisk Pakke",
+    description:
+      "For par, med romantisk dekor og ekstra snacks.",
+    price: 1995,
+    details: [
+      "Alt fra Standard Pakke",
+      "Romantisk dekorasjon",
+      "Ekstra mocktails",
+      "Ekstra fruktfat",
+    ],
+  },
+];
+
+function FlipCard({ pkg }) {
+  const [flipped, setFlipped] = useState(false);
+
+  return (
+    <div
+      className={`flip-card relative w-full h-80 cursor-pointer ${
+        flipped ? "flipped" : ""
+      }`}
+      onClick={() => setFlipped(!flipped)}
+    >
+      <div className="flip-card-inner w-full h-full rounded-xl shadow-2xl">
+        {/* Forside */}
+        <div className="flip-card-front bg-neutral-900 border border-brand/20 rounded-xl p-6 flex flex-col justify-center items-center">
+          <h3 className="font-heading text-2xl text-brand-light mb-2">
+            {pkg.title}
+          </h3>
+          <p className="text-lg text-slate-300 mb-4">{pkg.description}</p>
+          <div className="text-3xl font-bold text-brand mb-2">
+            {pkg.price} kr
+          </div>
+          <span className="text-sm text-slate-400">Klikk for detaljer</span>
+        </div>
+        {/* Bakside */}
+        <div className="flip-card-back bg-brand-dark border border-brand/20 rounded-xl p-6 flex flex-col justify-center items-center text-black">
+          <h4 className="font-heading text-xl font-bold mb-4">
+            Dette er inkludert:
+          </h4>
+          <ul className="space-y-2 text-left w-full max-w-xs mx-auto">
+            {pkg.details.map((item, i) => (
+              <li key={i} className="flex gap-2 items-center">
+                <span className="text-brand">✔️</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            className="mt-6 px-4 py-2 rounded bg-black text-brand font-bold"
+            onClick={(e) => {
+              e.stopPropagation();
+              setFlipped(false);
+            }}
+          >
+            Tilbake
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Pricelist() {
   return (
-    <div className="py-2">  
+    <div className="py-2">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="font-heading text-4xl text-center text-brand-light mb-16">
+        <h2 className="font-heading text-4xl text-center text-brand-light mb-16" >
           Prisliste
           <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
@@ -105,7 +191,7 @@ export default function Pricelist() {
         <div className="grid lg:grid-cols-2 lg:gap-x-16 gap-y-12">
           {/* --- VENSTRE KOLONNE: PRISPAKKER --- */}
           <div>
-            <h3 className="font-heading text-3xl text-brand-light mb-8">
+            <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
               Våre Pakker
             </h3>
             <div className="grid grid-cols-1 gap-6">
@@ -143,7 +229,7 @@ export default function Pricelist() {
 
             {/* Tillegg */}
             <div>
-              <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
+              <h3 className="font-heading text-3xl text-brand-light mb-8 text-center ">
                 Tillegg
               </h3>
               <div className="bg-neutral-900 border border-brand/20 rounded-xl p-6">
@@ -181,6 +267,18 @@ export default function Pricelist() {
             </div>
           </div>
         </div>
+
+        <section>
+          <h2 className="font-heading text-4xl text-brand-light mb-8 text-center">
+           
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {packages.map((pkg, i) => (
+              <FlipCard key={i} pkg={pkg} />
+            ))}
+          </div>
+          {/* ...resten av prisliste-layouten beholdes som før... */}
+        </section>
       </div>
     </div>
   );

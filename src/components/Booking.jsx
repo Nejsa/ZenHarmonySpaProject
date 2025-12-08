@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Calendar from "./Calendar"; // Merk: Calandar (ikke Calendar)
+import Calendar from "./Calendar";
 
 export default function Booking() {
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
+  const [step, setStep] = useState(1);
+  const [people, setPeople] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState('');
   const [formData, setFormData] = useState({
@@ -11,9 +11,10 @@ export default function Booking() {
     email: "",
     phone: "",
     message: "",
+    // legg til flere felter for tillegstjenester om ønskelig
   });
 
-  const total = adults * 995 + children * 599;
+  const total = people * 995; // Endre pris om ønskelig
 
   const handleChange = (e) => {
     setFormData({
@@ -22,13 +23,20 @@ export default function Booking() {
     });
   };
 
+  const handleNext = (e) => {
+    e && e.preventDefault();
+    setStep((s) => Math.min(s + 1, 3));
+  };
+
+  const handleBack = (e) => {
+    e && e.preventDefault();
+    setStep((s) => Math.max(s - 1, 1));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!selectedDate || !selectedTime) {
-      alert('Vennligst velg dato og tidspunkt');
-      return;
-    }
-    alert(`Booking sendt for ${selectedDate.toLocaleDateString('nb-NO')} kl ${selectedTime}!`);
+    alert("Booking sendt!");
+    // legg til faktisk bookinglogikk her
   };
 
   return (
@@ -50,125 +58,137 @@ export default function Booking() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-neutral-900 border border-brand/20 rounded-xl shadow-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-8">
-              
-              {/* Kalender seksjon */}
-              <Calendar
-                selectedDate={selectedDate}
-                onDateChange={setSelectedDate}
-                selectedTime={selectedTime}
-                onTimeChange={setSelectedTime}
-              />
+              {/* STEG 1: Dato og tid */}
+              {step === 1 && (
+                <>
+                  <h2 className="font-heading text-2xl text-brand-light mb-6">Velg dato og tid</h2>
+                  <Calendar
+                    selectedDate={selectedDate}
+                    onDateChange={setSelectedDate}
+                    selectedTime={selectedTime}
+                    onTimeChange={setSelectedTime}
+                  />
+                  <div className="flex justify-end">
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="bg-brand hover:bg-brand-dark text-black font-bold px-8 py-3 rounded-lg text-base transition-all duration-300 hover:scale-105 shadow-lg"
+                      disabled={!selectedDate || !selectedTime}
+                    >
+                      Neste
+                    </button>
+                  </div>
+                </>
+              )}
 
-              {/* Gjester og pris */}
-              <div>
-                <h3 className="font-heading text-2xl text-brand-light mb-6">
-                  Antall gjester
-                </h3>
-                <div className="bg-neutral-800 rounded-lg p-6 space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg text-brand-light">
-                      Voksne (995 kr)
-                    </span>
-                    <div className="flex items-center gap-4">
-                      <button
-                        type="button"
-                        onClick={() => setAdults(Math.max(1, adults - 1))}
-                        className="w-8 h-8 rounded-full border border-brand text-brand hover:bg-brand hover:text-black"
-                      >
-                        -
-                      </button>
-                      <span className="text-xl font-semibold text-white w-8 text-center">
-                        {adults}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setAdults(adults + 1)}
-                        className="w-8 h-8 rounded-full border border-brand text-brand hover:bg-brand hover:text-black"
-                      >
-                        +
-                      </button>
+              {/* STEG 2: Personer, info, tillegstjenester */}
+              {step === 2 && (
+                <>
+                  <h2 className="font-heading text-2xl text-brand-light mb-6">Antall gjester og personlig informasjon</h2>
+                  <div className="bg-neutral-800 rounded-lg p-6 space-y-4 mb-6">
+                    <div className="flex justify-between items-center">
+                      <span className="text-lg text-brand-light">Antall personer (995 kr per person)</span>
+                      <div className="flex items-center gap-4">
+                        <button
+                          type="button"
+                          onClick={() => setPeople(Math.max(1, people - 1))}
+                          className="w-8 h-8 rounded-full border border-brand text-brand hover:bg-brand hover:text-black"
+                        >
+                          -
+                        </button>
+                        <span className="text-xl font-semibold text-white w-8 text-center">{people}</span>
+                        <button
+                          type="button"
+                          onClick={() => setPeople(people + 1)}
+                          className="w-8 h-8 rounded-full border border-brand text-brand hover:bg-brand hover:text-black"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
-
-                  <div className="flex justify-between items-center">
-                    <span className="text-lg text-brand-light">Barn (599 kr)</span>
-                    <div className="flex items-center gap-4">
-                      <button
-                        type="button"
-                        onClick={() => setChildren(Math.max(0, children - 1))}
-                        className="w-8 h-8 rounded-full border border-brand text-brand hover:bg-brand hover:text-black"
-                      >
-                        -
-                      </button>
-                      <span className="text-xl font-semibold text-white w-8 text-center">
-                        {children}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setChildren(children + 1)}
-                        className="w-8 h-8 rounded-full border border-brand text-brand hover:bg-brand hover:text-black"
-                      >
-                        +
-                      </button>
-                    </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Fullt navn *"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="E-post *"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Telefonnummer *"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
+                    />
                   </div>
-
-                  <div className="flex justify-between items-center pt-4 mt-4 border-t border-brand/20">
-                    <span className="text-xl font-semibold text-brand-light">
-                      Totalt:
-                    </span>
-                    <span className="text-2xl font-bold text-brand">
-                      {total} kr
-                    </span>
+                  {/* Tillegstjenester kan legges til her */}
+                  <div className="flex justify-between mt-8">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-8 py-3 rounded-lg text-base transition-all duration-300 shadow-lg"
+                    >
+                      Tilbake
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="bg-brand hover:bg-brand-dark text-black font-bold px-8 py-3 rounded-lg text-base transition-all duration-300 hover:scale-105 shadow-lg"
+                      disabled={!formData.name || !formData.email || !formData.phone}
+                    >
+                      Neste
+                    </button>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
 
-              {/* Personlig informasjon */}
-              <div>
-                <h3 className="font-heading text-2xl text-brand-light mb-6">
-                  Personlig informasjon
-                </h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Fullt navn *"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="E-post *"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Telefonnummer *"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
-                  />
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="text-center pt-6">
-                <button
-                  type="submit"
-                  className="bg-brand hover:bg-brand-dark text-black font-bold px-12 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg"
-                >
-                  Send booking-forespørsel - {total} kr
-                </button>
-              </div>
+              {/* STEG 3: Betaling */}
+              {step === 3 && (
+                <>
+                  <h2 className="font-heading text-2xl text-brand-light mb-6">Betaling</h2>
+                  <div className="bg-neutral-800 rounded-lg p-6 space-y-4 mb-6">
+                    <p className="text-lg text-brand-light">Totalt: <span className="text-2xl font-bold text-brand">{total} kr</span></p>
+                    {/* Her kan du legge til betalingsfelt eller info */}
+                    <textarea
+                      name="message"
+                      placeholder="Evt. melding til oss (valgfritt)"
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="w-full border border-brand/30 rounded-lg px-4 py-3 bg-neutral-800 text-white placeholder-slate-400 focus:border-brand focus:outline-none"
+                    />
+                  </div>
+                  <div className="flex justify-between mt-8">
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="bg-gray-700 hover:bg-gray-600 text-white font-bold px-8 py-3 rounded-lg text-base transition-all duration-300 shadow-lg"
+                    >
+                      Tilbake
+                    </button>
+                    <button
+                      type="submit"
+                      className="bg-brand hover:bg-brand-dark text-black font-bold px-12 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                    >
+                      Send booking-forespørsel
+                    </button>
+                  </div>
+                </>
+              )}
             </form>
           </div>
         </div>
