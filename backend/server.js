@@ -53,14 +53,16 @@ app.post("/api/payment", async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items: [{
-        price_data: {
-          currency: "nok",
-          product_data: { name: "Spa booking" },
-          unit_amount: req.body.amount * 100,
+      line_items: [
+        {
+          price_data: {
+            currency: "nok",
+            product_data: { name: "Spa booking" },
+            unit_amount: req.body.amount * 100,
+          },
+          quantity: 1,
         },
-        quantity: 1,
-      }],
+      ],
       mode: "payment",
       success_url: "https://din-frontend.no/success",
       cancel_url: "https://din-frontend.no/cancel",
@@ -71,4 +73,6 @@ app.post("/api/payment", async (req, res) => {
   }
 });
 
-app.listen(5000, "0.0.0.0", () => console.log("Backend kjører på http://localhost:5000"));
+app.listen(5000, "0.0.0.0", () =>
+  console.log("Backend kjører på http://localhost:5000"),
+);

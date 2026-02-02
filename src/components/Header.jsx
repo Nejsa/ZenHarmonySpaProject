@@ -5,13 +5,7 @@ export default function Header() {
         {/* Logo og navn */}
         <div className="flex-1 flex items-center justify-center gap-4 ml-24">
           {/* Logo */}
-          <div className=" bg-black flex items-center justify-center">
-            <img
-              src="/images/ZenHarmonySpaLogo.png"
-              alt="Logo"
-              className="h-16 inline-block mr-1"
-            />
-          </div>
+          <div className=" bg-black flex items-center justify-center"></div>
           {/* Title and subtitle */}
           <div className="flex flex-col items-center">
             <div className="font-heading text-xl tracking-tight text-orange-200">

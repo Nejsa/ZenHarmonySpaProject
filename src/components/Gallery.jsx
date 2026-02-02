@@ -31,59 +31,54 @@ export default function Gallery() {
     {
       src: "/images/spa5.jpg",
       title: "Massasjerom",
-      description: "Et fredelig rom designet for total avslapning og profesjonell massasje."
+      description:
+        "Et fredelig rom designet for total avslapning og profesjonell massasje.",
     },
     {
       src: "/images/spa6.jpg",
       title: "Utendørs terrasse",
-      description: "En vakker terrasse med utsikt, perfekt for å nyte frisk luft og ro."
-    },
-    {
-      src: "/images/spa7.jpg",
-      title: "Spa-behandlinger",
-      description: "Et bredt utvalg av behandlinger som gir kroppen og sinnet ny energi."
+      description:
+        "En vakker terrasse med utsikt, perfekt for å nyte frisk luft og ro.",
     },
     {
       src: "/images/spa8.jpg",
       title: "Luksuriøse fasiliteter",
-      description: "Moderne spa-fasiliteter som kombinerer komfort, stil og velvære."
+      description:
+        "Moderne spa-fasiliteter som kombinerer komfort, stil og velvære.",
     },
     {
       src: "/images/spa9.jpg",
       title: "Rolige omgivelser",
-      description: "Et harmonisk miljø som fremmer indre balanse og ro."
-    },
-    {
-      src: "/images/spa10.jpg",
-      title: "Moderne design",
-      description: "Elegant interiør med rene linjer og en beroligende atmosfære."
+      description: "Et harmonisk miljø som fremmer indre balanse og ro.",
     },
     {
       src: "/images/spa11.jpg",
       title: "Velværeprodukter",
-      description: "Naturlige produkter av høy kvalitet brukt i alle behandlinger."
+      description:
+        "Naturlige produkter av høy kvalitet brukt i alle behandlinger.",
     },
     {
       src: "/images/spa12.jpg",
       title: "Profesjonelle terapeuter",
-      description: "Erfarne terapeuter som sørger for personlig og trygg behandling."
+      description:
+        "Erfarne terapeuter som sørger for personlig og trygg behandling.",
     },
     {
       src: "/images/spa13.jpg",
       title: "Avslappende atmosfære",
-      description: "Beroligende lys, duft og musikk som skaper en perfekt spaopplevelse."
+      description:
+        "Beroligende lys, duft og musikk som skaper en perfekt spaopplevelse.",
     },
     {
-      src: "/images/spa14.jpg",
+      src: "/images/spa10.jpg",
       title: "Eksklusive behandlinger",
-      description: "Skreddersydde behandlinger for deg som ønsker det lille ekstra."
-    }
+      description:
+        "Skreddersydde behandlinger for deg som ønsker det lille ekstra.",
+    },
   ];
 
-  // Gjeldende bilde
   const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
 
-  // ESC og piltaster
   useEffect(() => {
     function handleKeyDown(e) {
       if (selectedIndex === null) return;
@@ -93,9 +88,7 @@ export default function Gallery() {
       } else if (e.key === "ArrowRight") {
         setSelectedIndex((prev) => (prev + 1) % images.length);
       } else if (e.key === "ArrowLeft") {
-        setSelectedIndex(
-          (prev) => (prev - 1 + images.length) % images.length
-        );
+        setSelectedIndex((prev) => (prev - 1 + images.length) % images.length);
       }
     }
 
@@ -111,7 +104,14 @@ export default function Gallery() {
           <div className="w-36 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
-        {/* Bildegalleri - mer naturlig layout */}
+        {/* CHANGED: Added image-rendering style for sharper images */}
+        <style>{`
+          .gallery-image {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+          }
+        `}</style>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <div
@@ -119,13 +119,14 @@ export default function Gallery() {
               className="group relative overflow-hidden rounded-lg shadow-lg bg-neutral-800 h-64 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
               onClick={() => setSelectedIndex(index)}
             >
+              {/* CHANGED: Added gallery-image class and loading="lazy" for better performance */}
               <img
                 src={image.src}
                 alt={image.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="gallery-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
               />
 
-              {/* Subtle overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="text-white text-lg font-semibold drop-shadow-lg">
@@ -137,36 +138,34 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Knapp til detaljert fasilitetsside */}
         <div className="text-center mt-12">
           <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
-            Opplev luksus og avslapning i våre moderne spa-fasiliteter.
-            Hver detalj er nøye utformet for å gi deg den ultimate spa-opplevelsen.
+            Opplev luksus og avslapning i våre moderne spa-fasiliteter. Hver
+            detalj er nøye utformet for å gi deg den ultimate spa-opplevelsen.
           </p>
-          
+
           <button
-            onClick={() => window.open('/fasiliteter', '_blank')}
+            onClick={() => window.open("/fasiliteter", "_blank")}
             className="inline-flex items-center gap-3 bg-brand hover:bg-brand-dark text-black font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
           >
             <span>Utforsk våre fasiliteter i detalj</span>
-            <svg 
-              className="w-5 h-5" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
               />
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Popup / Modal - uendret */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
@@ -176,23 +175,21 @@ export default function Gallery() {
             className="relative bg-neutral-900 rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden animate-fadeIn"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Lukk-knapp */}
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-3 right-3 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition"
+              className="absolute top-3 right-3 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition z-10"
               aria-label="Lukk"
             >
               ✕
             </button>
 
-            {/* Forrige og neste-knapper */}
             <button
               onClick={() =>
                 setSelectedIndex(
-                  (selectedIndex - 1 + images.length) % images.length
+                  (selectedIndex - 1 + images.length) % images.length,
                 )
               }
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition z-10"
               aria-label="Forrige"
             >
               ←
@@ -201,16 +198,17 @@ export default function Gallery() {
               onClick={() =>
                 setSelectedIndex((selectedIndex + 1) % images.length)
               }
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition z-10"
               aria-label="Neste"
             >
               →
             </button>
 
+            {/* CHANGED: Added gallery-image class to modal image too */}
             <img
               src={selectedImage.src}
               alt={selectedImage.title}
-              className="w-full max-h-[70vh] object-cover"
+              className="gallery-image w-full max-h-[70vh] object-contain"
             />
 
             <div className="p-6 text-center space-y-2">

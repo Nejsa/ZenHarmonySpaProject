@@ -5,7 +5,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const linkClass = (isActive) =>
-    `px-4 py-2 rounded-md transition-colors ${isActive ? "bg-brand text-black" : "text-slate-200 hover:bg-white/5"}`;
+    `px-4 py-2 rounded-md transition-colors ${
+      isActive ? "bg-brand text-black" : "text-slate-200 hover:bg-white/5"
+    }`;
 
   return (
     <nav className="bg-neutral-900 border-b border-brand/10">
@@ -31,24 +33,23 @@ export default function Navbar() {
               >
                 Booking
               </NavLink>
-              
-               <a href="#prisliste" className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5">
-              Prisliste
-            </a>
-              <a href="#kontakt" className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5">
+
+              <a
+                href="prisliste"
+                className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
+              >
+                Prisliste
+              </a>
+              <a
+                href="kontakt"
+                className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
+              >
                 Kontakt
               </a>
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
-            <NavLink
-              to="/admin"
-              className="px-3 py-2 text-sm rounded-md bg-white/5 hover:bg-white/10 text-slate-200"
-            >
-              Admin
-            </NavLink>
-          </div>
+          <div className="hidden md:flex items-center gap-4"></div>
 
           <button
             onClick={() => setOpen(!open)}
@@ -83,26 +84,19 @@ export default function Navbar() {
               Booking
             </NavLink>
             <a
-              href="#prisliste"
+              href="prisliste"
               onClick={() => setOpen(false)}
               className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
             >
               Prisliste
             </a>
             <a
-              href="#kontakt"
+              href="kontakt"
               onClick={() => setOpen(false)}
               className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
             >
               Kontakt
             </a>
-            <NavLink
-              to="/admin"
-              onClick={() => setOpen(false)}
-              className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
-            >
-              Admin
-            </NavLink>
           </div>
         )}
       </div>
