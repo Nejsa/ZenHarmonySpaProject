@@ -8,7 +8,7 @@ import {
 // Eksisterende komponenter
 import Header from "./components/Header";
 import About from "./components/AboutUs";
-import Pricelist from "./components/priceList";
+import Pricelist from "./components/PriceList";
 import Gallery from "./components/Gallery";
 import GeneralInfo from "./components/GeneralInfo";
 import Contact from "./components/Contact";
@@ -17,7 +17,7 @@ import Footer from "./components/Footer";
 // Ny komponent
 import Facilities from "./components/Facilities";
 import Booking from "./components/Booking";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 
 // Hovedside komponenten
 function HomePage() {
