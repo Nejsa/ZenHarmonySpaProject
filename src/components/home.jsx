@@ -5,7 +5,7 @@ export default function Home() {
       <section className="relative flex items-center justify-center h-[75vh] overflow-hidden">
         {/* Bakgrunnsvideo */}
         <video
-          src="/video/SpaVideo.mp4"
+          src="/public/video/SpaVideo.mp4"
           className="absolute z-0 w-full h-full object-cover"
           autoPlay
           muted
