@@ -1,8 +1,8 @@
 // En hjelpekomponent for å lage pene listepunkter
 function InfoListItem({ children }) {
   return (
-    <li className="flex items-start gap-3">
-      <span className="text-brand mt-1.5 text-xl">🌿</span>
+    <li className="flex items-center gap-3">
+      <span className="text-brand mt-1 text-xl">🌿</span>
       <span className="text-slate-300">{children}</span>
     </li>
   );
@@ -10,7 +10,7 @@ function InfoListItem({ children }) {
 
 export default function About() {
   return (
-    <div className="py-2">  
+    <div className="py-2">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="font-heading text-4xl text-center text-brand-light mb-12">
           Om Oss
@@ -24,8 +24,8 @@ export default function About() {
             <div className="space-y-4">
               <p>
                 Velkommen til Zen Harmony Spa – din private oase av luksus og
-                avslapning! Hos oss kan
-                varmen fra badstuen, og nyt forfriskende spa-dusjer.
+                avslapning! Hos oss kan varmen fra badstuen, og nyt forfriskende
+                spa-dusjer.
               </p>
               <p>
                 Enten det er for en bursdag, en vennekveld, eller bare fordi
@@ -35,7 +35,6 @@ export default function About() {
                 akkurat slik dere ønsker.
               </p>
             </div>
-
             {/* Hva vi tilbyr */}
             <div>
               <h3 className="font-heading text-2xl text-brand-light mb-4">
@@ -49,7 +48,6 @@ export default function About() {
                 <InfoListItem>Te og kaffe er alltid tilgjengelig</InfoListItem>
               </ul>
             </div>
-
             {/* Beliggenhet */}
             <div>
               <h3 className="font-heading text-2xl text-brand-light mb-4">
@@ -62,6 +60,15 @@ export default function About() {
               </p>
             </div>
 
+            <div>
+              <h3 className="font-heading text-2xl text-brand-light mb-4">
+                Åpningstider
+              </h3>
+              <ul className="space-y-2">
+                <InfoListItem>Mandag–Fredag: 10:00–22:00</InfoListItem>
+                <InfoListItem>Lørdag–Søndag: 12:00–20:00</InfoListItem>
+              </ul>
+            </div>
             {/* Viktig informasjon */}
             <div>
               <h3 className="font-heading text-2xl text-brand-light mb-4">
