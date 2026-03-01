@@ -116,8 +116,7 @@ const packages = [
   },
   {
     title: "Romantisk Pakke",
-    description:
-      "For par, med romantisk dekor og ekstra snacks.",
+    description: "For par, med romantisk dekor og ekstra snacks.",
     price: 1995,
     details: [
       "Alt fra Standard Pakke",
@@ -183,7 +182,7 @@ export default function Pricelist() {
   return (
     <div className="py-2">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="font-heading text-4xl text-center text-brand-light mb-16" >
+        <h2 className="font-heading text-4xl text-center text-brand-light mb-16">
           Prisliste
           <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
@@ -269,9 +268,7 @@ export default function Pricelist() {
         </div>
 
         <section>
-          <h2 className="font-heading text-4xl text-brand-light mb-8 text-center">
-           
-          </h2>
+          <h2 className="font-heading text-4xl text-brand-light mb-8 text-center"></h2>
           <div className="grid md:grid-cols-3 gap-8">
             {packages.map((pkg, i) => (
               <FlipCard key={i} pkg={pkg} />

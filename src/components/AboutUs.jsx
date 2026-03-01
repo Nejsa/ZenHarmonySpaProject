@@ -1,8 +1,8 @@
 // En hjelpekomponent for å lage pene listepunkter
-function InfoListItem({ children }) {
+function InfoListItem({ children, icon = "🌿" }) {
   return (
     <li className="flex items-center gap-3">
-      <span className="text-brand mt-1 text-xl">🌿</span>
+      <span className="text-brand mt-1 text-xl">{icon}</span>
       <span className="text-slate-300">{children}</span>
     </li>
   );
@@ -19,7 +19,7 @@ export default function About() {
 
         {/* --- Nytt kort som rammer inn innholdet --- */}
         <div className="bg-neutral-900 border border-brand/20 rounded-xl shadow-lg p-8 md:p-12">
-          <div className="space-y-10 text-lg leading-relaxed text-slate-300">
+          <div className="space-y-8 text-lg leading-relaxed text-slate-300">
             {/* Introduksjon */}
             <div className="space-y-4">
               <p>
@@ -65,8 +65,12 @@ export default function About() {
                 Åpningstider
               </h3>
               <ul className="space-y-2">
-                <InfoListItem>Mandag–Fredag: 10:00–22:00</InfoListItem>
-                <InfoListItem>Lørdag–Søndag: 12:00–20:00</InfoListItem>
+                <InfoListItem icon="🌿">
+                  Mandag–Fredag: 10:00–22:00
+                </InfoListItem>
+                <InfoListItem icon="🌿">
+                  Lørdag–Søndag: 12:00–20:00
+                </InfoListItem>
               </ul>
             </div>
             {/* Viktig informasjon */}
