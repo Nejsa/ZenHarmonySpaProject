@@ -1,16 +1,14 @@
-import { useState } from "react";
-
 // --- Pris-konstanter ---
 const EXTRA_PERSON_PRICE = 690;
 
 // --- Pakkedata ---
 const PACKAGES = [
-  { id: 0, title: "Spa Express", basePrice: 1490, duration: 70 },
+  { id: 0, title: "Spa Express", basePrice: 1490, duration: 90 },
   {
     id: 1,
     title: "Standard Pakke",
     basePrice: 1990,
-    duration: 110,
+    duration: 120,
     isRecommended: true,
   },
   { id: 2, title: "Utvidet Pakke", basePrice: 2790, duration: 180 },
@@ -21,12 +19,14 @@ const PACKAGES = [
 // Oppdatert priskort med detaljert prisoversikt
 function PriceCard({ pkg }) {
   // Genererer en liste med priser for 2 til 6 personer
-  const pricesForMultiplePeople = Array.from({ length: 5 }, (_, i) => {
-    const personCount = i + 2;
-    const price = pkg.basePrice + (personCount - 2) * EXTRA_PERSON_PRICE;
-    return { count: personCount, price };
-  });
+  console.time("");
 
+  const pricesForMultiplePeople = Array.from({ length: 5 }, (_, i) => ({
+    count: i + 2,
+    price: pkg.basePrice + i * EXTRA_PERSON_PRICE,
+  }));
+
+  console.timeEnd;
   return (
     <div
       className={`bg-neutral-900 border ${
@@ -42,22 +42,21 @@ function PriceCard({ pkg }) {
       <div className="flex justify-between items-start">
         {/* Venstre side: Tittel og grunnpris */}
         <div>
-          <h3 className="font-heading text-2xl text-brand-light mb-2">
+          <h3 className="font-heading text-2xl text-brand-light mb-4">
             {pkg.title}
           </h3>
           <p className="text-4xl font-semibold text-white">
             kr {pkg.basePrice}
-            <span className="text-base font-normal text-slate-400">
+            <p className="text-lg font-normal text-slate-400 mt-4">
               {" "}
               / {pkg.duration} min
-            </span>
+            </p>
           </p>
-          <p className="text-slate-400 text-sm mt-1">For 2 personer</p>
         </div>
 
         {/* Høyre side: Priser for flere personer */}
-        <div className="text-right text-slate-400 text-sm pl-4">
-          <p className="font-semibold mb-1">Pris per gruppe:</p>
+        <div className="text-right text-slate-400 text-sm pl-2">
+          <p className="font-semibold mb-2">Pris per gruppe:</p>
           <ul className="space-y-1">
             {pricesForMultiplePeople.map(({ count, price }) => (
               <li key={count} className="flex justify-between gap-3">
@@ -95,89 +94,6 @@ function IncludedItem({ children }) {
   );
 }
 
-const packages = [
-  {
-    title: "Spa Express",
-    description: "Rask og avslappende spaopplevelse.",
-    price: 995,
-    details: [
-      "Boblebad",
-      "Badstue",
-      "Dusj",
-      "Håndklær, badekåper, tøfler",
-      "Te- og kaffebuffet",
-    ],
-  },
-  {
-    title: "Standard Pakke",
-    description: "Utvidet spa med mocktails og frukt.",
-    price: 1495,
-    details: ["Alt fra Spa Express", "Ekstra tid", "Mocktails", "Fruktfat"],
-  },
-  {
-    title: "Romantisk Pakke",
-    description: "For par, med romantisk dekor og ekstra snacks.",
-    price: 1995,
-    details: [
-      "Alt fra Standard Pakke",
-      "Romantisk dekorasjon",
-      "Ekstra mocktails",
-      "Ekstra fruktfat",
-    ],
-  },
-];
-
-function FlipCard({ pkg }) {
-  const [flipped, setFlipped] = useState(false);
-
-  return (
-    <div
-      className={`flip-card relative w-full h-80 cursor-pointer ${
-        flipped ? "flipped" : ""
-      }`}
-      onClick={() => setFlipped(!flipped)}
-    >
-      <div className="flip-card-inner w-full h-full rounded-xl shadow-2xl">
-        {/* Forside */}
-        <div className="flip-card-front bg-neutral-900 border border-brand/20 rounded-xl p-6 flex flex-col justify-center items-center">
-          <h3 className="font-heading text-2xl text-brand-light mb-2">
-            {pkg.title}
-          </h3>
-          <p className="text-lg text-slate-300 mb-4">{pkg.description}</p>
-          <div className="text-3xl font-bold text-brand mb-2">
-            {pkg.price} kr
-          </div>
-          <span className="text-sm text-slate-400">Klikk for detaljer</span>
-        </div>
-        {/* Bakside */}
-        <div className="flip-card-back bg-brand-dark border border-brand/20 rounded-xl p-6 flex flex-col justify-center items-center text-black">
-          <h4 className="font-heading text-xl font-bold mb-4">
-            Dette er inkludert:
-          </h4>
-          <ul className="space-y-2 text-left w-full max-w-xs mx-auto">
-            {pkg.details.map((item, i) => (
-              <li key={i} className="flex gap-2 items-center">
-                <span className="text-brand">✔️</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <button
-            type="button"
-            className="mt-6 px-4 py-2 rounded bg-black text-brand font-bold"
-            onClick={(e) => {
-              e.stopPropagation();
-              setFlipped(false);
-            }}
-          >
-            Tilbake
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Pricelist() {
   return (
     <div className="py-2">
@@ -187,7 +103,7 @@ export default function Pricelist() {
           <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
-        <div className="grid lg:grid-cols-2 lg:gap-x-16 gap-y-12">
+        <div className="flex flex-col lg:flex-row gap-12">
           {/* --- VENSTRE KOLONNE: PRISPAKKER --- */}
           <div>
             <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
@@ -266,16 +182,6 @@ export default function Pricelist() {
             </div>
           </div>
         </div>
-
-        <section>
-          <h2 className="font-heading text-4xl text-brand-light mb-8 text-center"></h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {packages.map((pkg, i) => (
-              <FlipCard key={i} pkg={pkg} />
-            ))}
-          </div>
-          {/* ...resten av prisliste-layouten beholdes som før... */}
-        </section>
       </div>
     </div>
   );
