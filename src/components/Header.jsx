@@ -19,8 +19,8 @@ export default function Header() {
 
         {/* Kontaktinfo (vises kun på desktop) */}
         <div className="hidden md:flex items-center gap-4 text-sm text-slate-600">
-          <span>Oslo</span>
-          <span>10:00–22:00</span>
+          <span>Kløfta</span>
+          <span>10:30–22:00</span>
           <a
             href="#contact"
             className="underline underline-offset-4 decoration-brand/30 hover:decoration-brand"

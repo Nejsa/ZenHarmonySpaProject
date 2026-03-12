@@ -1,10 +1,10 @@
 export default function Facilities() {
   const facilities = [
     {
-      src: "/images/spa1.jpg",
-      title: "Boblebad",
+      src: "/newImages/jazuzzi.jpeg",
+      title: "Jacuzzi",
       description:
-        "Opplev avslapning i vårt moderne boblebad, designet for maksimal komfort og ro.",
+        "Opplev avslapning i vårt moderne Jacuzzi, designet for maksimal komfort og ro.",
       benefits: [
         "Forbedrer blodsirkulasjonen",
         "Reduserer muskelspenning",
@@ -21,8 +21,8 @@ export default function Facilities() {
       ],
     },
     {
-      src: "/images/spa2.jpg",
-      title: "Avslapningsområde",
+      src: "/newImages/image00017.jpeg",
+      title: "Finsk Badstue",
       description:
         "Et fredelig område perfekt for hvile mellom behandlingene, omgitt av myke tekstiler og varme toner.",
       benefits: [
@@ -41,8 +41,8 @@ export default function Facilities() {
       ],
     },
     {
-      src: "/images/spa3.jpg",
-      title: "Privat spa-rom",
+      src: "/newImages/image00014.jpeg",
+      title: "Varme Spadusjer",
       description:
         "Et eksklusivt rom for deg og din partner med private fasiliteter og rolig atmosfære.",
       benefits: [
@@ -61,8 +61,8 @@ export default function Facilities() {
       ],
     },
     {
-      src: "/images/spa4.jpg",
-      title: "Badstue og dampbad",
+      src: "/newImages/image00012.jpeg",
+      title: "Nordisk Kalddusj",
       description:
         "Forfrisk kroppen og sinnet med våre moderne badstuer og dampbad i naturlige materialer.",
       benefits: [
@@ -81,8 +81,8 @@ export default function Facilities() {
       ],
     },
     {
-      src: "/images/spa5.jpg",
-      title: "Massasjerom",
+      src: "/newImages/image00010.jpeg",
+      title: "Avslapningslounge",
       description:
         "Et fredelig rom designet for total avslapning og profesjonell massasje.",
       benefits: [
@@ -98,26 +98,6 @@ export default function Facilities() {
         "Lyddemping",
         "Duftterapi",
         "Justerbar belysning",
-      ],
-    },
-    {
-      src: "/images/spa6.jpg",
-      title: "Utendørs terrasse",
-      description:
-        "En vakker terrasse med utsikt, perfekt for å nyte frisk luft og ro.",
-      benefits: [
-        "Frisk luft og vitamin D",
-        "Kontakt med naturen",
-        "Reduserer stress",
-        "Forbedrer humøret",
-        "Øker mindfulness",
-      ],
-      features: [
-        "Panoramautsikt",
-        "Komfortable sittemøbler",
-        "Værbestandige materialer",
-        "Private områder",
-        "Plantebegrønning",
       ],
     },
   ];

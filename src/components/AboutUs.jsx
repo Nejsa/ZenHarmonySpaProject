@@ -60,19 +60,6 @@ export default function About() {
               </p>
             </div>
 
-            <div>
-              <h3 className="font-heading text-2xl text-brand-light mb-4">
-                Åpningstider
-              </h3>
-              <ul className="space-y-2">
-                <InfoListItem icon="🌿">
-                  Mandag–Fredag: 10:00–22:00
-                </InfoListItem>
-                <InfoListItem icon="🌿">
-                  Lørdag–Søndag: 12:00–20:00
-                </InfoListItem>
-              </ul>
-            </div>
             {/* Viktig informasjon */}
             <div>
               <h3 className="font-heading text-2xl text-brand-light mb-4">

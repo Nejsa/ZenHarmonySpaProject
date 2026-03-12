@@ -19,14 +19,12 @@ const PACKAGES = [
 // Oppdatert priskort med detaljert prisoversikt
 function PriceCard({ pkg }) {
   // Genererer en liste med priser for 2 til 6 personer
-  console.time("");
 
   const pricesForMultiplePeople = Array.from({ length: 5 }, (_, i) => ({
     count: i + 2,
     price: pkg.basePrice + i * EXTRA_PERSON_PRICE,
   }));
 
-  console.timeEnd;
   return (
     <div
       className={`bg-neutral-900 border ${
@@ -99,8 +97,8 @@ export default function Pricelist() {
     <div className="py-2">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="font-heading text-4xl text-center text-brand-light mb-16">
-          Prisliste
-          <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
+          Priser & Praktisk Informasjon
+          <div className="w-80 h-0.5 bg-brand mx-auto mt-4"></div>
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-12">
@@ -144,7 +142,7 @@ export default function Pricelist() {
 
             {/* Tillegg */}
             <div>
-              <h3 className="font-heading text-3xl text-brand-light mb-8 text-center ">
+              <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
                 Tillegg
               </h3>
               <div className="bg-neutral-900 border border-brand/20 rounded-xl p-6">
@@ -178,6 +176,78 @@ export default function Pricelist() {
                     <span className="font-semibold text-white">kr 39</span>
                   </li>
                 </ul>
+              </div>
+            </div>
+
+            {/* PRAKTISK INFORMASJON  */}
+            <div>
+              <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
+                Praktisk Informasjon
+              </h3>
+              <div className="bg-neutral-900 border border-brand/20 rounded-xl p-8">
+                <div className="space-y-6">
+                  {/* Adresse */}
+                  <div>
+                    <div className="flex items-start gap-3 mb-2">
+                      <span className="text-brand text-xl mt-0.5">📍</span>
+                      <div>
+                        <p className="text-brand-light font-semibold text-lg">
+                          Adresse
+                        </p>
+                        <p className="text-slate-300">Eksempelveien 123</p>
+                        <p className="text-slate-300">0123 Oslo</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Åpningstider */}
+                  <div>
+                    <div className="flex items-start gap-3 mb-2">
+                      <span className="text-brand text-xl mt-0.5">🕐</span>
+                      <div>
+                        <p className="text-brand-light font-semibold text-lg">
+                          Åpningstider
+                        </p>
+                        <p className="text-slate-300">
+                          Søndag - Torsdag: 10:30 - 22:00
+                        </p>
+                        <p className="text-slate-300">
+                          Fredag - Lørdag: 11:00 - 23:00
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Viktige regler */}
+                  <div>
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="text-brand text-xl mt-0.5">⚠️</span>
+                      <p className="text-brand-light font-semibold text-lg">
+                        Viktige Regler
+                      </p>
+                    </div>
+                    <ul className="space-y-3 ml-9">
+                      <li className="flex items-start gap-3">
+                        <span className="text-brand mt-1">🌿</span>
+                        <span className="text-slate-300">
+                          Ankomst 5 minutter før
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-brand mt-1">🌿</span>
+                        <span className="text-slate-300">
+                          Avbestillingsregler gjelder
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <span className="text-brand mt-1">🌿</span>
+                        <span className="text-slate-300">
+                          Barn må være i følge med en voksen
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -13,6 +13,7 @@ import Gallery from "./components/Gallery";
 import GeneralInfo from "./components/GeneralInfo";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import GoogleReviews from "./components/GoogleReviews";
 
 // Ny komponent
 import Facilities from "./components/Facilities";
@@ -84,6 +85,11 @@ function HomePage() {
       <div className="py-8"></div>
 
       <GeneralInfo />
+
+      {/* Separator */}
+      <div className="py-8"></div>
+
+      <GoogleReviews />
 
       {/* Separator */}
       <div className="py-8"></div>

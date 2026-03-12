@@ -18,17 +18,24 @@ export default function GeneralInfo() {
               <div className="grid grid-cols-1 gap-4">
                 <div className="flex justify-between">
                   <span>Mandag - Torsdag:</span>
-                  <span className="font-semibold text-white">16:00 - 22:00</span>
+                  <span className="font-semibold text-white">
+                    11:00 - 23:00
+                  </span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Fredag - Lørdag:</span>
-                  <span className="font-semibold text-white">12:00 - 23:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Søndag:</span>
-                  <span className="font-semibold text-white">12:00 - 21:00</span>
+                  <span>Fredag - Søndag:</span>
+                  <span className="font-semibold text-white">
+                    12:00 - 23:00
+                  </span>
                 </div>
               </div>
+            </div>
+
+            <h3 className="font-heading text-2xl text-brand-light mb-4">
+              Adresse
+            </h3>
+            <div className="">
+              <span className="">Gjerdrumsvegen 5, 2040 Kløfta</span>
             </div>
 
             {/* Viktige regler */}
@@ -36,6 +43,7 @@ export default function GeneralInfo() {
               <h3 className="font-heading text-2xl text-brand-light mb-4">
                 Viktige Regler
               </h3>
+
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="text-brand mt-1.5 text-xl">🌿</span>
