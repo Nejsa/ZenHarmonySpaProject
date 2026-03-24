@@ -1,192 +1,95 @@
 export default function Facilities() {
   const facilities = [
     {
-      src: "/newImages/jazuzzi.jpeg",
+      src: "/newImages/image00011.jpeg",
       title: "Jacuzzi",
       description:
-        "Opplev avslapning i vårt moderne Jacuzzi, designet for maksimal komfort og ro.",
-      benefits: [
-        "Forbedrer blodsirkulasjonen",
-        "Reduserer muskelspenning",
-        "Senker stressnivået",
-        "Bidrar til bedre søvn",
-        "Lindrer leddsmerter",
-      ],
-      features: [
-        "Temperaturregulering 37-40°C",
-        "Hydroterapi-dyser",
-        "LED-belysning",
-        "Plass til opptil 6 personer",
-        "Vannrensesystem",
-      ],
+        "Slipp spenningen, kjenn roen. Bobler og varme på 37.5°C som lindrer muskler, bedrer søvn og senker stressnivået.",
+      tags: "Avslappende · Sosialt · Terapeutisk",
     },
     {
       src: "/newImages/image00017.jpeg",
       title: "Finsk Badstue",
       description:
-        "Et fredelig område perfekt for hvile mellom behandlingene, omgitt av myke tekstiler og varme toner.",
-      benefits: [
-        "Senker kortisol-nivåer",
-        "Fremmer mental ro",
-        "Forbedrer fokus og klarhet",
-        "Reduserer angst",
-        "Øker kreativitet",
-      ],
-      features: [
-        "Ergonomiske hvilestoler",
-        "Dempet belysning",
-        "Naturlige materialer",
-        "Rolig bakgrunnsmusikk",
-        "Temperaturkontroll",
-      ],
+        "Der stress blir til ro. Varme på 80–90°C som løser opp spenning og senker stress.",
+      tags: "Beroligende · Detox · Velvære",
     },
     {
       src: "/newImages/image00014.jpeg",
       title: "Varme Spadusjer",
       description:
-        "Et eksklusivt rom for deg og din partner med private fasiliteter og rolig atmosfære.",
-      benefits: [
-        "Privat og intim atmosfære",
-        "Personlig tilpasset opplevelse",
-        "Styrker relasjoner",
-        "Fullstendig avslapning",
-        "Økt intimitet",
-      ],
-      features: [
-        "Private dusjer",
-        "Egen garderobe",
-        "Klimakontroll",
-        "Premium lydsystem",
-        "Dimmbare lys",
-      ],
+        "Din egen oase. Varme dusjer, dempet lys og god stemning, tilrettelagt for total avslapning. ",
+      tags: "Privat · Avslappende · Eksklusivt",
     },
     {
       src: "/newImages/image00012.jpeg",
       title: "Nordisk Kalddusj",
       description:
-        "Forfrisk kroppen og sinnet med våre moderne badstuer og dampbad i naturlige materialer.",
-      benefits: [
-        "Renser huden grundig",
-        "Støtter immunforsvaret",
-        "Forbedrer kardiovaskulær helse",
-        "Øker stoffskiftet",
-        "Frigjør endorfiner",
-      ],
-      features: [
-        "Finsk badstue (80-90°C)",
-        "Dampbad (45°C, 100% fuktighet)",
-        "Tre fra FSC-sertifiserte skoger",
-        "Aromatiske oljer",
-        "Ventilasjonssystem",
-      ],
+        "Kontrasten som vekker deg. Gå fra badstue til kald dusj og kjenn kroppen våkne til live. ",
+      tags: "Forfriskende · Energigivende · Stimulerende",
     },
     {
       src: "/newImages/image00010.jpeg",
       title: "Avslapningslounge",
       description:
-        "Et fredelig rom designet for total avslapning og profesjonell massasje.",
-      benefits: [
-        "Lindrer muskelspenning",
-        "Forbedrer fleksibilitet",
-        "Reduserer inflammasjon",
-        "Øker energinivået",
-        "Fremmer dyp avslapning",
-      ],
-      features: [
-        "Oppvarmede massasjebenker",
-        "Premium massasjeprodukter",
-        "Lyddemping",
-        "Duftterapi",
-        "Justerbar belysning",
-      ],
+        "Den perfekte avslutningen. Et avslappet rom hvor du kan hvile etter spaopplevelsen med en kopp te eller kaffe, god musikk og behagelig sittegruppe.",
+      tags: "Ro · Komfort · Avkobling",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
+    <div className="min-h-screen bg-black">
+      {/* Header seksjon */}
       <div className="bg-gradient-to-b from-neutral-900 to-black py-20">
-        <div className="max-w-6xl mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="font-heading text-5xl text-brand-light mb-6">
             Våre Fasiliteter
             <div className="w-72 h-0.5 bg-brand mx-auto mt-6"></div>
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Utforsk våre eksklusive spa-fasiliteter i detalj. Hver fasilitet er
-            nøye designet for å gi deg maksimal velvære og avslapning.
+          <p className="text-xl text-slate-300 leading-relaxed">
+            Utforsk våre eksklusive spa-fasiliteter. Hver detalj er nøye
+            designet for å gi deg maksimal velvære og avslapning.
           </p>
         </div>
       </div>
 
-      {/* Fasiliteter */}
-      <div className="py-16">
-        <div className="max-w-6xl mx-auto px-4 space-y-32">
-          {facilities.map((facility, index) => (
-            <div
-              key={index}
-              className={`grid lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? "lg:grid-flow-col-dense" : ""
-              }`}
-            >
-              {/* Bilde */}
-              <div className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl border-2 border-brand/30">
-                  <img
-                    src={facility.src}
-                    alt={facility.title}
-                    className="w-full h-96 object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                </div>
-              </div>
+      {/* Facilities - Fullscreen bilder */}
+      {facilities.map((facility, index) => (
+        <div
+          key={index}
+          className="relative h-screen w-full overflow-hidden group"
+        >
+          {/* Bilde */}
+          <img
+            src={facility.src}
+            alt={facility.title}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
 
-              {/* Innhold */}
-              <div
-                className={`space-y-8 ${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""}`}
-              >
-                <div>
-                  <h2 className="font-heading text-4xl text-brand-light mb-4">
-                    {facility.title}
-                  </h2>
-                  <p className="text-lg text-slate-300 leading-relaxed">
-                    {facility.description}
-                  </p>
-                </div>
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
 
-                {/* Fordeler */}
-                <div>
-                  <h3 className="font-heading text-2xl text-brand-light mb-4">
-                    Helsefordeler
-                  </h3>
-                  <ul className="space-y-3">
-                    {facility.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="text-brand mt-1.5 text-xl">🌿</span>
-                        <span className="text-slate-300">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+          {/* Tekst overlay - NEDERST */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+            <div className="max-w-4xl mx-auto">
+              {/* Tittel */}
+              <h2 className="font-heading text-4xl md:text-6xl text-white mb-4">
+                {facility.title}
+              </h2>
 
-                {/* Funksjoner */}
-                <div>
-                  <h3 className="font-heading text-2xl text-brand-light mb-4">
-                    Funksjoner & Utstyr
-                  </h3>
-                  <ul className="space-y-3">
-                    {facility.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="text-brand mt-1.5 text-xl">✨</span>
-                        <span className="text-slate-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              {/* Beskrivelse */}
+              <p className="text-lg md:text-xl text-slate-200 leading-relaxed mb-4 max-w-3xl">
+                {facility.description}
+              </p>
+
+              {/* Tags */}
+              <p className="text-brand-light text-sm md:text-base">
+                {facility.tags}
+              </p>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      ))}
 
       {/* Call to action */}
       <div className="bg-gradient-to-t from-neutral-900 to-black py-20">
@@ -194,7 +97,7 @@ export default function Facilities() {
           <h2 className="font-heading text-4xl text-brand-light mb-6">
             Klar for å oppleve våre fasiliteter?
           </h2>
-          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8">
             Book din spa-opplevelse i dag og opplev alle våre eksklusive
             fasiliteter.
           </p>
