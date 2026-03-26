@@ -8,12 +8,11 @@ import {
 // Eksisterende komponenter
 import Header from "./components/Header";
 import About from "./components/AboutUs";
-import Pricelist from "./components/PriceList";
 import Gallery from "./components/Gallery";
-import GeneralInfo from "./components/GeneralInfo";
+import Pricelist from "./components/PriceList";
+import GoogleReviews from "./components/GoogleReviews";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import GoogleReviews from "./components/GoogleReviews";
 
 // Ny komponent
 import Facilities from "./components/Facilities";
@@ -80,11 +79,6 @@ function HomePage() {
       <div id="prisliste">
         <Pricelist />
       </div>
-
-      {/* Separator */}
-      <div className="py-8"></div>
-
-      <GeneralInfo />
 
       {/* Separator */}
       <div className="py-8"></div>

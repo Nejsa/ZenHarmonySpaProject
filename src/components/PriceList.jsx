@@ -186,8 +186,8 @@ export default function Pricelist() {
                     <p className="text-brand-light font-semibold text-lg mb-1">
                       Adresse
                     </p>
-                    <p className="text-slate-300">Eksempelveien 123</p>
-                    <p className="text-slate-300">0123 Oslo</p>
+                    <p className="text-slate-300">Gjerdrumsvegen 5</p>
+                    <p className="text-slate-300">2040 Kløfta</p>
                   </div>
                 </div>
 
