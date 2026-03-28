@@ -17,6 +17,8 @@ export default function Navbar() {
             <NavLink to="/" className="text-2xl font-heading text-brand-light">
               Zen Harmony
             </NavLink>
+
+            {/* DESKTOP NAVIGATION */}
             <div className="hidden md:flex items-center gap-2">
               <NavLink to="/" className={({ isActive }) => linkClass(isActive)}>
                 Hjem
@@ -28,29 +30,33 @@ export default function Navbar() {
                 Fasiliteter
               </NavLink>
               <NavLink
+                to="/ourhistory"
+                className={({ isActive }) => linkClass(isActive)}
+              >
+                Vår Historie
+              </NavLink>
+              <NavLink
+                to="/prisliste"
+                className={({ isActive }) => linkClass(isActive)}
+              >
+                Prisliste
+              </NavLink>
+              <NavLink
                 to="/booking"
                 className={({ isActive }) => linkClass(isActive)}
               >
                 Booking
               </NavLink>
-
-              <a
-                href="prisliste"
-                className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
-              >
-                Prisliste
-              </a>
-              <a
-                href="kontakt"
-                className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
+              <NavLink
+                to="/kontakt"
+                className={({ isActive }) => linkClass(isActive)}
               >
                 Kontakt
-              </a>
+              </NavLink>
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-4"></div>
-
+          {/* HAMBURGER BUTTON */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-200 hover:bg-white/5"
@@ -60,6 +66,7 @@ export default function Navbar() {
           </button>
         </div>
 
+        {/* MOBILE MENU */}
         {open && (
           <div className="md:hidden py-4 flex flex-col gap-2">
             <NavLink
@@ -77,26 +84,33 @@ export default function Navbar() {
               Fasiliteter
             </NavLink>
             <NavLink
+              to="/ourhistory"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Vår Historie
+            </NavLink>
+            <NavLink
+              to="/prisliste"
+              onClick={() => setOpen(false)}
+              className={({ isActive }) => linkClass(isActive)}
+            >
+              Prisliste
+            </NavLink>
+            <NavLink
               to="/booking"
               onClick={() => setOpen(false)}
               className={({ isActive }) => linkClass(isActive)}
             >
               Booking
             </NavLink>
-            <a
-              href="prisliste"
+            <NavLink
+              to="/kontakt"
               onClick={() => setOpen(false)}
-              className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
-            >
-              Prisliste
-            </a>
-            <a
-              href="kontakt"
-              onClick={() => setOpen(false)}
-              className="px-4 py-2 rounded-md text-slate-200 hover:bg-white/5"
+              className={({ isActive }) => linkClass(isActive)}
             >
               Kontakt
-            </a>
+            </NavLink>
           </div>
         )}
       </div>

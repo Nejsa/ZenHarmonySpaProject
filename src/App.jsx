@@ -14,10 +14,11 @@ import GoogleReviews from "./components/GoogleReviews";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-// Ny komponent
+// Nye komponenter
 import Facilities from "./components/Facilities";
 import Booking from "./components/Booking";
 import Navbar from "./components/Navbar";
+import OurHistory from "./components/OurHistory";
 
 // Hovedside komponenten
 function HomePage() {
@@ -63,36 +64,20 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Separator */}
       <div className="py-8"></div>
-
       <About />
-
-      {/* Separator */}
       <div className="py-8"></div>
-
       <Gallery />
-
-      {/* Separator */}
       <div className="py-8"></div>
-
       <div id="prisliste">
         <Pricelist />
       </div>
-
-      {/* Separator */}
       <div className="py-8"></div>
-
       <GoogleReviews />
-
-      {/* Separator */}
       <div className="py-8"></div>
-
       <div id="kontakt">
         <Contact />
       </div>
-
-      {/* Separator */}
       <div className="py-8"></div>
       <Footer />
     </>
@@ -105,6 +90,7 @@ function App() {
       <div className="min-h-screen bg-black text-white">
         <Routes>
           <Route path="/" element={<HomePage />} />
+
           <Route
             path="/fasiliteter"
             element={
@@ -114,6 +100,18 @@ function App() {
               </>
             }
           />
+
+          {/* NY ROUTE: Vår Historie */}
+          <Route
+            path="/ourhistory"
+            element={
+              <>
+                <Navbar />
+                <OurHistory />
+              </>
+            }
+          />
+
           <Route
             path="/booking"
             element={
@@ -123,6 +121,7 @@ function App() {
               </>
             }
           />
+
           <Route
             path="/kontakt"
             element={
@@ -132,6 +131,7 @@ function App() {
               </>
             }
           />
+
           <Route
             path="/prisliste"
             element={
