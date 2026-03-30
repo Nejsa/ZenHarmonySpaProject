@@ -10,7 +10,17 @@ export default function Navigation() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Beregn offset for sticky navbar (80px høyde)
+      const navbarHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
       setOpen(false);
     }
   };
@@ -41,6 +51,39 @@ export default function Navigation() {
     }
   }, [location]);
 
+  // Determine active section based on scroll position
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["prisliste", "kontakt"];
+      const navbarHeight = 100; // Litt margin
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If section is in viewport (within navbar offset)
+          if (rect.top <= navbarHeight && rect.bottom >= navbarHeight) {
+            setActiveSection(sectionId);
+            return;
+          }
+        }
+      }
+      // If no section is active, we're at top (home)
+      setActiveSection("");
+    };
+
+    // Only add scroll listener on homepage
+    if (location.pathname === "/") {
+      window.addEventListener("scroll", handleScroll);
+      handleScroll(); // Check initial position
+      return () => window.removeEventListener("scroll", handleScroll);
+    } else {
+      setActiveSection("");
+    }
+  }, [location.pathname]);
+
   // Link style for NavLink (separate pages)
   const navLinkClass = (isActive) =>
     `px-3 py-1 text-sm border-b-2 transition-colors ${
@@ -50,21 +93,32 @@ export default function Navigation() {
     }`;
 
   // Button style (homepage sections)
-  const buttonClass =
-    "px-3 py-1 text-sm border-b-2 border-transparent text-text-primary hover:text-brand-light hover:border-brand/50 transition-colors cursor-pointer";
+  const sectionButtonClass = (sectionId) =>
+    `px-3 py-1 text-sm border-b-2 transition-colors cursor-pointer ${
+      activeSection === sectionId
+        ? "border-brand text-brand-light"
+        : "border-transparent text-text-primary hover:text-brand-light hover:border-brand/50"
+    }`;
 
   return (
     <nav className="sticky top-0 z-50 bg-bg-primary/95 backdrop-blur-sm border-b border-brand/10">
       <div className="max-w-7xl mx-auto px-4">
         {/* DESKTOP LAYOUT */}
-        <div className="hidden md:flex items-center justify-between h-20">
+        <div className="hidden lg:flex items-center justify-between h-20">
           {/* LOGO - VENSTRE */}
-          <Link to="/" className="flex flex-col">
-            <div className="font-heading text-xl tracking-tight text-brand">
-              Zen Harmony Spa
-            </div>
-            <div className="text-[9px] tracking-[0.2em] uppercase text-text-dim">
-              Calm · Wellness · Private Spa
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="/newImages/ZenHarmonySpaLogo.png"
+              alt="Zen Harmony Spa Logo"
+              className="h-12 w-auto"
+            />
+            <div className="flex flex-col">
+              <div className="font-heading text-xl tracking-tight text-brand">
+                Zen Harmony Spa
+              </div>
+              <div className="text-[9px] tracking-[0.2em] uppercase text-text-dim">
+                Calm · Wellness · Private Spa
+              </div>
             </div>
           </Link>
 
@@ -73,7 +127,9 @@ export default function Navigation() {
             {/* HJEM */}
             <NavLink
               to="/"
-              className={({ isActive }) => navLinkClass(isActive)}
+              className={({ isActive }) =>
+                navLinkClass(isActive && activeSection === "")
+              }
             >
               Hjem
             </NavLink>
@@ -97,14 +153,14 @@ export default function Navigation() {
             {/* HOMEPAGE SECTIONS - fungerer fra alle sider */}
             <button
               onClick={() => handleSectionClick("prisliste")}
-              className={buttonClass}
+              className={sectionButtonClass("prisliste")}
             >
-              Prisliste og Praktisk Info
+              Prisliste
             </button>
 
             <button
               onClick={() => handleSectionClick("kontakt")}
-              className={buttonClass}
+              className={sectionButtonClass("kontakt")}
             >
               Kontakt Oss
             </button>
@@ -112,23 +168,27 @@ export default function Navigation() {
 
           {/* KONTAKTINFO - HØYRE */}
           <div className="flex items-center gap-4 text-xs text-text-dim">
-            <span>Oslo</span>
-            <span>10:00–22:00</span>
+            <span>Kløfta</span>
+            <span>10:30–22:00</span>
           </div>
         </div>
 
         {/* MOBILE LAYOUT */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex flex-col">
-              <div className="font-heading text-lg text-brand">
+            {/* Mobile logo */}
+            <Link to="/" className="flex items-center gap-2">
+              <img
+                src="/newImages/ZenHarmonySpaLogo.png"
+                alt="Zen Harmony Spa Logo"
+                className="h-8 w-auto"
+              />
+              <div className="font-heading text-base text-brand">
                 Zen Harmony Spa
-              </div>
-              <div className="text-[8px] tracking-[0.2em] uppercase text-text-dim">
-                Calm · Wellness · Private Spa
               </div>
             </Link>
 
+            {/* Hamburger button */}
             <button
               onClick={() => setOpen(!open)}
               className="inline-flex items-center justify-center p-2 rounded-md text-brand hover:bg-white/5"
@@ -146,7 +206,7 @@ export default function Navigation() {
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `px-4 py-2 rounded-md text-sm ${
-                    isActive
+                    isActive && activeSection === ""
                       ? "bg-brand/10 text-brand-light border-l-2 border-brand"
                       : "text-text-primary"
                   }`
@@ -188,21 +248,29 @@ export default function Navigation() {
               {/* HOMEPAGE SECTIONS */}
               <button
                 onClick={() => handleSectionClick("prisliste")}
-                className="px-4 py-2 rounded-md text-sm text-text-primary text-left"
+                className={`px-4 py-2 rounded-md text-sm text-left ${
+                  activeSection === "prisliste"
+                    ? "bg-brand/10 text-brand-light border-l-2 border-brand"
+                    : "text-text-primary"
+                }`}
               >
-                Prisliste og Praktisk Info
+                Prisliste
               </button>
 
               <button
                 onClick={() => handleSectionClick("kontakt")}
-                className="px-4 py-2 rounded-md text-sm text-text-primary text-left"
+                className={`px-4 py-2 rounded-md text-sm text-left ${
+                  activeSection === "kontakt"
+                    ? "bg-brand/10 text-brand-light border-l-2 border-brand"
+                    : "text-text-primary"
+                }`}
               >
                 Kontakt Oss
               </button>
 
               <div className="mt-4 pt-4 border-t border-brand/10 px-4 flex flex-col gap-2 text-xs text-text-dim">
-                <span>📍 Oslo</span>
-                <span>🕐 10:00–22:00</span>
+                <span>📍 Kløfta</span>
+                <span>🕐 10:30–22:00</span>
               </div>
             </div>
           )}

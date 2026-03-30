@@ -97,14 +97,20 @@ export default function Gallery() {
   }, [selectedIndex, images.length]);
 
   return (
-    <div className="py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="font-heading text-4xl text-center text-brand-light mb-16">
-          Vårt Spa
-          <div className="w-36 h-0.5 bg-brand mx-auto mt-4"></div>
-        </h2>
+    <div className="py-20 bg-bg-primary">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <p className="text-xs font-medium tracking-[0.3em] uppercase text-brand mb-4">
+            Galleri
+          </p>
+          <h2 className="font-heading text-5xl md:text-6xl font-light text-brand-light mb-6">
+            Vårt Spa
+          </h2>
+          <div className="w-24 h-px bg-brand-dark mx-auto"></div>
+        </div>
 
-        {/* CHANGED: Added image-rendering style for sharper images */}
+        {/* Image rendering optimization */}
         <style>{`
           .gallery-image {
             image-rendering: -webkit-optimize-contrast;
@@ -112,14 +118,14 @@ export default function Gallery() {
           }
         `}</style>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16">
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-lg shadow-lg bg-neutral-800 h-64 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="group relative overflow-hidden rounded-lg bg-bg-card h-64 cursor-pointer transform transition-all duration-300 hover:scale-105 border border-brand/10 hover:border-brand/30"
               onClick={() => setSelectedIndex(index)}
             >
-              {/* CHANGED: Added gallery-image class and loading="lazy" for better performance */}
               <img
                 src={image.src}
                 alt={image.title}
@@ -127,9 +133,9 @@ export default function Gallery() {
                 loading="lazy"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4">
-                  <span className="text-white text-lg font-semibold drop-shadow-lg">
+                  <span className="text-brand-light text-lg font-semibold drop-shadow-lg">
                     {image.title}
                   </span>
                 </div>
@@ -138,15 +144,16 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
+        {/* CTA Section */}
+        <div className="text-center">
+          <p className="text-lg text-text-primary max-w-2xl mx-auto mb-8 leading-relaxed">
             Opplev luksus og avslapning i våre moderne spa-fasiliteter. Hver
             detalj er nøye utformet for å gi deg den ultimate spa-opplevelsen.
           </p>
 
           <button
-            onClick={() => window.open("/fasiliteter", "_blank")}
-            className="inline-flex items-center gap-3 bg-brand hover:bg-brand-dark text-black font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            onClick={() => window.open("/fasiliteter", "_self")}
+            className="inline-flex items-center gap-3 bg-brand hover:bg-brand-light text-bg-primary font-medium text-sm tracking-[0.1em] uppercase px-8 py-4 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
           >
             <span>Utforsk våre fasiliteter i detalj</span>
             <svg
@@ -166,56 +173,62 @@ export default function Gallery() {
         </div>
       </div>
 
+      {/* Modal */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedIndex(null)}
         >
           <div
-            className="relative bg-neutral-900 rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden animate-fadeIn"
+            className="relative bg-bg-card border border-brand/20 rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close button */}
             <button
               onClick={() => setSelectedIndex(null)}
-              className="absolute top-3 right-3 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition z-10"
+              className="absolute top-3 right-3 text-warm-white bg-bg-primary/80 hover:bg-bg-primary rounded-full p-2 transition z-10"
               aria-label="Lukk"
             >
               ✕
             </button>
 
+            {/* Previous button */}
             <button
               onClick={() =>
                 setSelectedIndex(
                   (selectedIndex - 1 + images.length) % images.length,
                 )
               }
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition z-10"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-warm-white bg-bg-primary/80 hover:bg-bg-primary rounded-full p-2 transition z-10"
               aria-label="Forrige"
             >
               ←
             </button>
+
+            {/* Next button */}
             <button
               onClick={() =>
                 setSelectedIndex((selectedIndex + 1) % images.length)
               }
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white bg-black/40 hover:bg-black/70 rounded-full p-2 transition z-10"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-warm-white bg-bg-primary/80 hover:bg-bg-primary rounded-full p-2 transition z-10"
               aria-label="Neste"
             >
               →
             </button>
 
-            {/* CHANGED: Added gallery-image class to modal image too */}
+            {/* Image */}
             <img
               src={selectedImage.src}
               alt={selectedImage.title}
               className="gallery-image w-full max-h-[70vh] object-contain"
             />
 
-            <div className="p-6 text-center space-y-2">
-              <h3 className="text-2xl text-brand-light font-semibold">
+            {/* Caption */}
+            <div className="p-6 text-center space-y-2 bg-bg-card">
+              <h3 className="text-2xl text-brand-light font-heading">
                 {selectedImage.title}
               </h3>
-              <p className="text-slate-300 text-base max-w-lg mx-auto">
+              <p className="text-text-primary text-base max-w-lg mx-auto leading-relaxed">
                 {selectedImage.description}
               </p>
             </div>

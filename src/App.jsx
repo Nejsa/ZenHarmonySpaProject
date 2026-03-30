@@ -8,7 +8,6 @@ import Gallery from "./components/Gallery";
 import Pricelist from "./components/PriceList";
 import GoogleReviews from "./components/GoogleReviews";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 import Facilities from "./components/Facilities";
 import OurHistory from "./components/OurHistory";
 
@@ -17,31 +16,30 @@ function HomePage() {
   return (
     <>
       <Header /> {/* Video hero + navbar */}
-      <div className="py-8"></div>
-      {/* GALLERY (med knapp til /fasiliteter) */}
-      <Gallery />
-      <div className="py-8"></div>
+      <div></div>
       {/* OM OSS */}
       <div id="om-oss">
         <About />
       </div>
-      <div className="py-8"></div>
+      <div></div>
+      {/* GALLERY (med knapp til /fasiliteter) */}
+      <Gallery />
+      <div></div>
       {/* PRISLISTE */}
       <div id="prisliste">
         <Pricelist />
       </div>
-      <div className="py-8"></div>
+      <div></div>
       {/* ANMELDELSER */}
       <div id="anmeldelser">
         <GoogleReviews />
       </div>
-      <div className="py-8"></div>
+      <div></div>
       {/* KONTAKT */}
       <div id="kontakt">
         <Contact />
       </div>
-      <div className="py-8"></div>
-      <Footer />
+      <div></div>
     </>
   );
 }
