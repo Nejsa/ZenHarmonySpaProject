@@ -2,8 +2,8 @@
 function InfoListItem({ children, icon = "🌿" }) {
   return (
     <li className="flex items-center gap-3">
-      <span className="text-brand mt-1 text-xl">{icon}</span>
-      <span className="text-slate-300">{children}</span>
+      <span className="text-[#c9a96e] mt-1 text-xl">{icon}</span>
+      <span className="text-[#d4c9b0]">{children}</span>
     </li>
   );
 }
@@ -14,12 +14,12 @@ export default function About() {
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="font-heading text-4xl text-center text-brand-light mb-12">
           Om Oss
-          <div className="w-32 h-0.5 bg-brand mx-auto mt-4"></div>
+          <div className="w-32 h-0.5 bg-[#c9a96e] mx-auto mt-4"></div>
         </h2>
 
-        {/* --- Nytt kort som rammer inn innholdet --- */}
-        <div className="bg-neutral-900 border border-brand/20 rounded-xl shadow-lg p-8 md:p-12">
-          <div className="space-y-8 text-lg leading-relaxed text-slate-300">
+        {/* Card wrapper */}
+        <div className="bg-[#221f18] border border-[#c9a96e]/20 rounded-xl shadow-lg p-8 md:p-12">
+          <div className="space-y-8 text-lg leading-relaxed text-[#d4c9b0]">
             {/* Introduksjon */}
             <div className="space-y-4">
               <p>
@@ -35,9 +35,10 @@ export default function About() {
                 akkurat slik dere ønsker.
               </p>
             </div>
+
             {/* Hva vi tilbyr */}
             <div>
-              <h3 className="font-heading text-2xl text-brand-light mb-4">
+              <h3 className="font-heading text-2xl text-[#e8d5aa] mb-4">
                 For din komfort
               </h3>
               <ul className="space-y-2">
@@ -48,9 +49,10 @@ export default function About() {
                 <InfoListItem>Te og kaffe er alltid tilgjengelig</InfoListItem>
               </ul>
             </div>
+
             {/* Beliggenhet */}
             <div>
-              <h3 className="font-heading text-2xl text-brand-light mb-4">
+              <h3 className="font-heading text-2xl text-[#e8d5aa] mb-4">
                 Vår beliggenhet
               </h3>
               <p>
@@ -62,7 +64,7 @@ export default function About() {
 
             {/* Viktig informasjon */}
             <div>
-              <h3 className="font-heading text-2xl text-brand-light mb-4">
+              <h3 className="font-heading text-2xl text-[#e8d5aa] mb-4">
                 Viktig informasjon
               </h3>
               <ul className="space-y-2">
@@ -80,7 +82,7 @@ export default function About() {
               </ul>
             </div>
 
-            <p className="text-center text-brand-light pt-8">
+            <p className="text-center text-[#e8d5aa] pt-8">
               Vi takker for forståelsen og ser frem til å ønske deg velkommen!
             </p>
           </div>

@@ -1,34 +1,34 @@
+import Navigation from "./Navigation";
+
 export default function Header() {
   return (
-    <div className="w-full bg-black border-b sticky top-0 z-50">
-      <div className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
-        {/* Logo og navn */}
-        <div className="flex-1 flex items-center justify-center gap-4 ml-24">
-          {/* Logo */}
-          <div className=" bg-black flex items-center justify-center"></div>
-          {/* Title and subtitle */}
-          <div className="flex flex-col items-center">
-            <div className="font-heading text-xl tracking-tight text-orange-200">
-              Zen Harmony Spa
-            </div>
-            <div className="text-xs text-white">
-              Calm • Wellness • Private Spa
-            </div>
-          </div>
-        </div>
+    <>
+      <Navigation />
 
-        {/* Kontaktinfo (vises kun på desktop) */}
-        <div className="hidden md:flex items-center gap-4 text-sm text-slate-600">
-          <span>Kløfta</span>
-          <span>10:30–22:00</span>
-          <a
-            href="#contact"
-            className="underline underline-offset-4 decoration-brand/30 hover:decoration-brand"
-          >
-            Kontakt oss
-          </a>
+      {/* HERO VIDEO SECTION */}
+      <section className="relative flex items-center justify-center h-screen overflow-hidden">
+        <video
+          src="/video/SpaVideo.mp4"
+          className="absolute z-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+
+        <div className="absolute inset-0 bg-black/50 z-10" />
+
+        <div className="relative z-20 text-center px-4">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-light mb-6 text-[#f0e8d8]">
+            Velkommen til{" "}
+            <span className="italic text-[#c9a96e]">Zen Harmony Spa</span>
+          </h1>
+          <p className="text-lg md:text-xl text-[#d4c9b0] max-w-2xl mx-auto leading-relaxed">
+            Opplev avslapning og harmoni i vårt luksuriøse private spa – perfekt
+            for deg, venner eller familie.
+          </p>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
