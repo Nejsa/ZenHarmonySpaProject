@@ -131,7 +131,7 @@ export default function Contact() {
                       Vi svarer normalt innen 24 timer
                     </p>
                     <a
-                      href="mailto:kontakt@zenharmonyspa.no"
+                      href="mailto:post@zenharmonyspa.no"
                       className="text-brand hover:text-brand-light transition-colors font-medium"
                     >
                       post@zenharmonyspa.no
@@ -153,21 +153,21 @@ export default function Contact() {
                     </p>
                     <div className="flex gap-3">
                       <a
-                        href="#"
+                        href="https://www.instagram.com/zenharmonyspa/"
                         className="text-brand hover:text-brand-light transition-colors"
                       >
                         Instagram
                       </a>
                       <span className="text-text-dim">•</span>
                       <a
-                        href="#"
+                        href="https://www.facebook.com/p/Zen-Harmony-Spa-61567016723855/"
                         className="text-brand hover:text-brand-light transition-colors"
                       >
                         Facebook
                       </a>
                       <span className="text-text-dim">•</span>
                       <a
-                        href="#"
+                        href="https://www.tiktok.com/@zenharmonyspa.no"
                         className="text-brand hover:text-brand-light transition-colors"
                       >
                         Tiktok
