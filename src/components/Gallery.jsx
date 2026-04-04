@@ -5,75 +5,52 @@ export default function Gallery() {
 
   const images = [
     {
-      src: "/images/spa1.jpg",
-      title: "Boblebad",
-      description:
-        "Opplev avslapning i vårt moderne boblebad, designet for maksimal komfort og ro.",
+      src: "/newImages/jacuzzi.jpeg",
+      title: "Private Jacuzzier",
     },
     {
-      src: "/images/spa2.jpg",
-      title: "Avslapningsområde",
-      description:
-        "Et fredelig område perfekt for hvile mellom behandlingene, omgitt av myke tekstiler og varme toner.",
+      src: "/newImages/Badstue.jpeg",
+      title: "Finsk Badstue",
     },
     {
-      src: "/images/spa3.jpg",
+      src: "/newImages/Spadusjer.jpeg",
       title: "Privat spa-rom",
-      description:
-        "Et eksklusivt rom for deg og din partner med private fasiliteter og rolig atmosfære.",
     },
     {
-      src: "/images/spa4.jpg",
+      src: "/newImages/Kalddusj.jpeg",
       title: "Badstue og dampbad",
-      description:
-        "Forfrisk kroppen og sinnet med våre moderne badstuer og dampbad i naturlige materialer.",
     },
     {
-      src: "/images/spa5.jpg",
+      src: "/newImages/Kopper.jpeg",
       title: "Massasjerom",
-      description:
-        "Et fredelig rom designet for total avslapning og profesjonell massasje.",
     },
     {
-      src: "/images/spa6.jpg",
+      src: "/newImages/ZenLove.jpeg",
       title: "Utendørs terrasse",
-      description:
-        "En vakker terrasse med utsikt, perfekt for å nyte frisk luft og ro.",
     },
     {
-      src: "/images/spa8.jpg",
+      src: "/newImages/Garderobe.jpeg",
       title: "Luksuriøse fasiliteter",
-      description:
-        "Moderne spa-fasiliteter som kombinerer komfort, stil og velvære.",
     },
     {
-      src: "/images/spa9.jpg",
+      src: "/newImages/Resepsjon.jpeg",
       title: "Rolige omgivelser",
-      description: "Et harmonisk miljø som fremmer indre balanse og ro.",
     },
     {
-      src: "/images/spa11.jpg",
+      src: "/newImages/Lounge.jpeg",
       title: "Velværeprodukter",
-      description:
-        "Naturlige produkter av høy kvalitet brukt i alle behandlinger.",
     },
     {
-      src: "/images/spa12.jpg",
+      src: "/newImages/Drikke.jpeg",
       title: "Profesjonelle terapeuter",
-      description:
-        "Erfarne terapeuter som sørger for personlig og trygg behandling.",
     },
     {
-      src: "/images/spa13.jpg",
+      src: "/newImages/Frukt.jpeg",
       title: "Avslappende atmosfære",
-      description:
-        "Beroligende lys, duft og musikk som skaper en perfekt spaopplevelse.",
     },
     {
       src: "/images/spa10.jpg",
       title: "Eksklusive behandlinger",
-      description:
-        "Skreddersydde behandlinger for deg som ønsker det lille ekstra.",
     },
   ];
 

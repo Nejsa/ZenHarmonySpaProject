@@ -35,7 +35,7 @@ export default function Header() {
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src="/public/video/SpaVideo.mp4" type="video/mp4" />
+            <source src="/video/SpaVideo.mp4" type="video/mp4" />
           </video>
 
           {/* Dark Overlay */}

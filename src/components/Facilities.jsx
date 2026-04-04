@@ -1,35 +1,35 @@
 export default function Facilities() {
   const facilities = [
     {
-      src: "/newImages/image00011.jpeg",
+      src: "/newImages/jacuzzi.jpeg",
       title: "Jacuzzi",
       description:
         "Slipp spenningen, kjenn roen. Bobler og varme på 37.5°C som lindrer muskler, bedrer søvn og senker stressnivået.",
       tags: "Avslappende · Sosialt · Terapeutisk",
     },
     {
-      src: "/newImages/image00017.jpeg",
+      src: "/newImages/Badstue.jpeg",
       title: "Finsk Badstue",
       description:
         "Der stress blir til ro. Varme på 80–90°C som løser opp spenning og senker stress.",
       tags: "Beroligende · Detox · Velvære",
     },
     {
-      src: "/newImages/image00014.jpeg",
+      src: "/newImages/Spadusjer.jpeg",
       title: "Varme Spadusjer",
       description:
         "Din egen oase. Varme dusjer, dempet lys og god stemning, tilrettelagt for total avslapning. ",
       tags: "Privat · Avslappende · Eksklusivt",
     },
     {
-      src: "/newImages/image00012.jpeg",
+      src: "/newImages/Kalddusj.jpeg",
       title: "Nordisk Kalddusj",
       description:
         "Kontrasten som vekker deg. Gå fra badstue til kald dusj og kjenn kroppen våkne til live. ",
       tags: "Forfriskende · Energigivende · Stimulerende",
     },
     {
-      src: "/newImages/image00010.jpeg",
+      src: "/newImages/Lounge.jpeg",
       title: "Avslapningslounge",
       description:
         "Den perfekte avslutningen. Et avslappet rom hvor du kan hvile etter spaopplevelsen med en kopp te eller kaffe, god musikk og behagelig sittegruppe.",

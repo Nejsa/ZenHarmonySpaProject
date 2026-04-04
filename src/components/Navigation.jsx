@@ -233,28 +233,19 @@ export default function Navigation({ onBookingClick }) {
           {open && (
             <div className="py-4 flex flex-col gap-2 border-t border-brand/10 pb-24">
               {/* BOOK NÅ - ØVERST I MENU */}
-              <button
-                onClick={() => {
-                  onBookingClick();
-                  setOpen(false);
-                }}
-                className="mx-4 mb-4 bg-brand hover:bg-brand-light text-bg-primary font-semibold py-3.5 rounded-lg transition-all active:scale-95 shadow-lg shadow-brand/20 flex items-center justify-center gap-2"
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                Book Nå
-              </button>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
 
               {/* HJEM */}
               <NavLink
@@ -280,7 +271,6 @@ export default function Navigation({ onBookingClick }) {
               >
                 Hjem
               </NavLink>
-
               {/* OM OSS */}
               <button
                 onClick={() => handleSectionClick("om-oss")}
@@ -292,7 +282,6 @@ export default function Navigation({ onBookingClick }) {
               >
                 Om Oss
               </button>
-
               {/* FASILITETER */}
               <NavLink
                 to="/fasiliteter"
@@ -307,7 +296,6 @@ export default function Navigation({ onBookingClick }) {
               >
                 Fasiliteter
               </NavLink>
-
               {/* PRISLISTE */}
               <button
                 onClick={() => handleSectionClick("prisliste")}
@@ -319,7 +307,6 @@ export default function Navigation({ onBookingClick }) {
               >
                 Prisliste
               </button>
-
               {/* VÅR HISTORIE */}
               <NavLink
                 to="/var-historie"
@@ -334,7 +321,6 @@ export default function Navigation({ onBookingClick }) {
               >
                 Vår Historie
               </NavLink>
-
               {/* KONTAKT OSS */}
               <button
                 onClick={() => handleSectionClick("kontakt")}
@@ -346,7 +332,6 @@ export default function Navigation({ onBookingClick }) {
               >
                 Kontakt Oss
               </button>
-
               {/* KONTAKTINFO NEDERST */}
               <div className="mt-4 pt-4 border-t border-brand/10 px-4 flex flex-col gap-2 text-xs text-text-dim">
                 <span>📍 Kløfta</span>
