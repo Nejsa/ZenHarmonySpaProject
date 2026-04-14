@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import About from "./components/AboutUs";
 import Gallery from "./components/Gallery";
-import PriceList from "./components/priceList";
+import PriceList from "./components/PriceList";
 import GoogleReviews from "./components/GoogleReviews";
 import Contact from "./components/Contact";
 import Facilities from "./components/Facilities";
