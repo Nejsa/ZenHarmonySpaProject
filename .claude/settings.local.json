@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(where git:*)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/Git/bin:/c/Program Files/Git/cmd\")",
+      "Bash(git -C \"c:/ZenHarmonySpaProject\" status)",
+      "Bash(git -C \"c:/ZenHarmonySpaProject\" diff)",
+      "Bash(git -C \"c:/ZenHarmonySpaProject\" log --oneline -5)"
+    ]
+  }
+}

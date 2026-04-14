@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import About from "./components/AboutUs";
 import Gallery from "./components/Gallery";
-import Pricelist from "./components/PriceList";
+import PriceList from "./components/priceList";
 import GoogleReviews from "./components/GoogleReviews";
 import Contact from "./components/Contact";
 import Facilities from "./components/Facilities";
@@ -27,7 +27,7 @@ function HomePage() {
       <div></div>
       {/* PRISLISTE */}
       <div id="prisliste">
-        <Pricelist />
+        <PriceList />
       </div>
       <div></div>
       {/* ANMELDELSER */}

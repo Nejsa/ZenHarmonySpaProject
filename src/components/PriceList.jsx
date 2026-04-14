@@ -30,17 +30,54 @@ const PACKAGES = [
   },
 ];
 
+// --- Tilleggsdata ---
+const ADDONS = [
+  {
+    id: 0,
+    title: "Fruktfat",
+    description: "Fersk, sesongbasert frukt",
+    price: 289,
+  },
+  {
+    id: 1,
+    title: "Dekorasjon",
+    description: "Romantisk eller bursdag",
+    price: 259,
+  },
+  {
+    id: 2,
+    title: "Mocktails",
+    description: "Jordbær, pasjonsfrukt, Blue Lagoon",
+    price: 99,
+  },
+  {
+    id: 3,
+    title: "Brus 0.33l",
+    description: "Diverse varianter",
+    price: 39,
+  },
+];
+
+// --- Inkluderte elementer ---
+const INCLUDED_ITEMS = [
+  "Eksklusiv og privat tilgang til hele spaet",
+  "Privat boblebad, badstue og spa-dusjer",
+  "Mulighet for egen musikk og lyssetting",
+  "Myke håndklær, badekåper og tøfler",
+  "Te- og kaffebuffet",
+];
+
 // --- Komponenter ---
 
 function PriceCard({ pkg }) {
-  // Generer priser basert på faktiske grenser
   const pricesForMultiplePeople = Array.from(
     { length: pkg.maxPersons - pkg.minPersons + 1 },
     (_, i) => {
       const personCount = pkg.minPersons + i;
       return {
         count: personCount,
-        price: pkg.basePrice + (personCount - 2) * EXTRA_PERSON_PRICE,
+        price:
+          pkg.basePrice + (personCount - pkg.minPersons) * EXTRA_PERSON_PRICE,
       };
     },
   );
@@ -99,6 +136,7 @@ function IncludedItem({ children }) {
   return (
     <li className="flex items-start gap-3">
       <svg
+        aria-hidden="true"
         className="w-5 h-5 text-brand flex-shrink-0 mt-0.5"
         fill="none"
         stroke="currentColor"
@@ -116,7 +154,7 @@ function IncludedItem({ children }) {
   );
 }
 
-export default function Pricelist() {
+export default function PriceList() {
   return (
     <div className="py-20 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
@@ -131,105 +169,59 @@ export default function Pricelist() {
           <div className="w-24 h-px bg-brand-dark mx-auto"></div>
         </div>
 
-        {/* 3 KOLONNER */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {/* KOLONNE 1: Våre Pakker */}
-          <div className="lg:col-span-3">
-            <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
-              Våre Pakker
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {PACKAGES.map((pkg) => (
-                <PriceCard key={pkg.id} pkg={pkg} />
-              ))}
-            </div>
+        {/* Våre Pakker */}
+        <div className="mb-16">
+          <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
+            Våre Pakker
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {PACKAGES.map((pkg) => (
+              <PriceCard key={pkg.id} pkg={pkg} />
+            ))}
           </div>
         </div>
 
         {/* 2 KOLONNER: Inkludert + Tillegg */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Alltid Inkludert */}
-          <div>
+          <div className="flex flex-col">
             <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
               Alltid Inkludert
             </h3>
-            <div className="bg-bg-card border border-brand/20 rounded-xl p-8 h-full">
+            <div className="bg-bg-card border border-brand/20 rounded-xl p-8 flex-1">
               <ul className="space-y-4">
-                <IncludedItem>
-                  Eksklusiv og privat tilgang til hele spaet
-                </IncludedItem>
-                <IncludedItem>
-                  Privat boblebad, badstue og spa-dusjer
-                </IncludedItem>
-                <IncludedItem>
-                  Mulighet for egen musikk og lyssetting
-                </IncludedItem>
-                <IncludedItem>Myke håndklær, badekåper og tøfler</IncludedItem>
-                <IncludedItem>Te- og kaffebuffet</IncludedItem>
+                {INCLUDED_ITEMS.map((item) => (
+                  <IncludedItem key={item}>{item}</IncludedItem>
+                ))}
               </ul>
             </div>
           </div>
 
           {/* Tillegg */}
-          <div>
+          <div className="flex flex-col">
             <h3 className="font-heading text-3xl text-brand-light mb-8 text-center">
               Tillegg
             </h3>
-            <div className="bg-bg-card border border-brand/20 rounded-xl p-8 h-full">
+            <div className="bg-bg-card border border-brand/20 rounded-xl p-8 flex-1">
               <ul className="space-y-5">
-                <li className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <span className="text-brand-light font-medium text-lg block mb-1">
-                      Fruktfat
+                {ADDONS.map((addon) => (
+                  <li
+                    key={addon.id}
+                    className="flex justify-between items-start"
+                  >
+                    <div className="flex-1">
+                      <span className="text-brand-light font-medium text-lg block mb-1">
+                        {addon.title}
+                      </span>
+                      <p className="text-text-dim text-sm">
+                        {addon.description}
+                      </p>
+                    </div>
+                    <span className="font-semibold text-warm-white text-lg ml-4">
+                      kr {addon.price}
                     </span>
-                    <p className="text-text-dim text-sm">
-                      Fersk, sesongbasert frukt
-                    </p>
-                  </div>
-                  <span className="font-semibold text-warm-white text-lg ml-4">
-                    kr 289
-                  </span>
-                </li>
-
-                <li className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <span className="text-brand-light font-medium text-lg block mb-1">
-                      Dekorasjon
-                    </span>
-                    <p className="text-text-dim text-sm">
-                      Romantisk eller bursdag
-                    </p>
-                  </div>
-                  <span className="font-semibold text-warm-white text-lg ml-4">
-                    kr 259
-                  </span>
-                </li>
-
-                <li className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <span className="text-brand-light font-medium text-lg block mb-1">
-                      Mocktails
-                    </span>
-                    <p className="text-text-dim text-sm">
-                      Jordbær, pasjonsfrukt, Blue Lagoon
-                    </p>
-                  </div>
-                  <span className="font-semibold text-warm-white text-lg ml-4">
-                    kr 99
-                  </span>
-                </li>
-
-                <li className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <span className="text-brand-light font-medium text-lg block mb-1">
-                      Brus 0.33l
-                    </span>
-                    <p className="text-text-dim text-sm">Diverse varianter</p>
-                  </div>
-                  <span className="font-semibold text-warm-white text-lg ml-4">
-                    kr 39
-                  </span>
-                </li>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
