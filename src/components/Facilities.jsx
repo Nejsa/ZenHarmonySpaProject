@@ -1,7 +1,7 @@
 export default function Facilities() {
   const facilities = [
     {
-      src: "/newImages/jacuzzi.jpeg",
+      src: "/newImages/Jacuzzi.jpeg",
       title: "Jacuzzi",
       description:
         "Slipp spenningen, kjenn roen. Bobler og varme på 37.5°C som lindrer muskler, bedrer søvn og senker stressnivået.",
@@ -63,6 +63,7 @@ export default function Facilities() {
           <img
             src={facility.src}
             alt={facility.title}
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
 

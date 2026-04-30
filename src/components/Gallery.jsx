@@ -5,7 +5,7 @@ export default function Gallery() {
 
   const images = [
     {
-      src: "/newImages/jacuzzi.jpeg",
+      src: "/newImages/Jacuzzi.jpeg",
       title: "Private Jacuzzier",
     },
     {
@@ -14,7 +14,7 @@ export default function Gallery() {
     },
     {
       src: "/newImages/Spadusjer.jpeg",
-      title: "Privat spa-rom",
+      title: "Private Spadusjer",
     },
     {
       src: "/newImages/Kalddusj.jpeg",
@@ -22,35 +22,35 @@ export default function Gallery() {
     },
     {
       src: "/newImages/Kopper.jpeg",
-      title: "Massasjerom",
+      title: "Kaffemaskin",
     },
     {
       src: "/newImages/ZenLove.jpeg",
-      title: "Utendørs terrasse",
+      title: "Romantiske Øyeblikk",
     },
     {
       src: "/newImages/Garderobe.jpeg",
-      title: "Luksuriøse fasiliteter",
+      title: "Garderobe",
     },
     {
       src: "/newImages/Resepsjon.jpeg",
-      title: "Rolige omgivelser",
+      title: "Resepsjon",
     },
     {
       src: "/newImages/Lounge.jpeg",
-      title: "Velværeprodukter",
+      title: "Zen Lounge",
     },
     {
       src: "/newImages/Drikke.jpeg",
-      title: "Profesjonelle terapeuter",
+      title: "Mocktails (Jordbær, Pasjonsfrukt, Blue Lagoon)",
     },
     {
       src: "/newImages/Frukt.jpeg",
-      title: "Avslappende atmosfære",
+      title: "Fruktfat",
     },
     {
-      src: "/images/spa10.jpg",
-      title: "Eksklusive behandlinger",
+      src: "/newImages/Tekjokken.jpg",
+      title: "Tekjøkken",
     },
   ];
 
@@ -197,6 +197,7 @@ export default function Gallery() {
             <img
               src={selectedImage.src}
               alt={selectedImage.title}
+              loading="lazy"
               className="gallery-image w-full max-h-[70vh] object-contain"
             />
 
