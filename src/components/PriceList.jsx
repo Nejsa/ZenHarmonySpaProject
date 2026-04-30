@@ -6,7 +6,7 @@ const PACKAGES = [
   {
     id: 0,
     title: "Spa Express",
-    basePrice: 1490,
+    basePrice: 1790,
     duration: 90,
     minPersons: 2,
     maxPersons: 3,
@@ -14,7 +14,7 @@ const PACKAGES = [
   {
     id: 1,
     title: "Standard Pakke",
-    basePrice: 1990,
+    basePrice: 2290,
     duration: 120,
     isRecommended: true,
     minPersons: 2,
@@ -23,7 +23,7 @@ const PACKAGES = [
   {
     id: 2,
     title: "Utvidet Pakke",
-    basePrice: 2790,
+    basePrice: 3390,
     duration: 180,
     minPersons: 3,
     maxPersons: 8,
@@ -36,13 +36,14 @@ const ADDONS = [
     id: 0,
     title: "Fruktfat",
     description: "Fersk, sesongbasert frukt",
-    price: 289,
+    price: 299,
   },
   {
     id: 1,
-    title: "Dekorasjon",
-    description: "Romantisk eller bursdag",
-    price: 259,
+    title: "Zen Treatbox",
+    description:
+      "En pakke med deilig miks av både søtt og salt, laget for å gi deg den komplette opplevelsen.",
+    price: 219,
   },
   {
     id: 2,
