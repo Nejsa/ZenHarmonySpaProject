@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 export default function GoogleReviews() {
   return (
-    <div className="pb-20 pt-20 bg-bg-primary">
+    <div className="py-20 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -21,10 +21,29 @@ export default function GoogleReviews() {
         </Helmet>
 
         {/* Widget container */}
-        <div
-          className="elfsight-app-b2f6aff6-634b-41d0-99d9-9e941e4be8b1"
-          data-elfsight-app-lazy
-        />
+        <div className="min-h-[600px] relative">
+          <div
+            className="elfsight-app-b2f6aff6-634b-41d0-99d9-9e941e4be8b1"
+            data-elfsight-app-lazy
+          />
+
+          {/* Loading skeleton (vises mens Elfsight laster) */}
+          <div className="absolute inset-0 -z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="bg-bg-card border border-brand/10 rounded-lg p-6 h-48"
+                >
+                  <div className="h-4 bg-brand/20 rounded w-3/4 mb-4"></div>
+                  <div className="h-4 bg-brand/20 rounded w-full mb-2"></div>
+                  <div className="h-4 bg-brand/20 rounded w-5/6 mb-2"></div>
+                  <div className="h-4 bg-brand/20 rounded w-4/6"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

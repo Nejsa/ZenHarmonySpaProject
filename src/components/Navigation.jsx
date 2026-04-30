@@ -27,12 +27,14 @@ export default function Navigation({ onBookingClick }) {
   // Handle navigation to homepage sections from other pages
   const handleSectionClick = (sectionId) => {
     if (location.pathname === "/") {
-      scrollToSection(sectionId);
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
     } else {
       navigate("/");
       setTimeout(() => {
         scrollToSection(sectionId);
-      }, 100);
+      }, 300);
     }
     setOpen(false);
   };
