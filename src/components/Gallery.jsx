@@ -100,14 +100,14 @@ export default function Gallery() {
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-lg bg-bg-card h-64 cursor-pointer transform transition-all duration-300 hover:scale-105 border border-brand/10 hover:border-brand/30"
+              className="group relative overflow-hidden rounded-lg bg-brand/10 h-64 cursor-pointer transform transition-all duration-300 hover:scale-105 border border-brand/10 hover:border-brand/30"
               onClick={() => setSelectedIndex(index)}
             >
               <img
                 src={image.src}
                 alt={image.title}
                 className="gallery-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
+                loading={index < 4 ? "eager" : "lazy"}
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
